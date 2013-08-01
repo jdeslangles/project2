@@ -3,4 +3,6 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :albums
   has_many :photos, through: :albums
+
+  mount_uploader :avatar, AvatarUploader
 end

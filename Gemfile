@@ -6,6 +6,25 @@ gem 'rails', '3.2.14'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem 'rmagick'
+gem 'carrierwave'
+
+group :development do
+  gem 'rspec-rails'
+  gem 'pry-rails'
+  gem 'pry-debugger'
+  gem 'pry-stack_explorer'
+  gem 'binding_of_caller'
+  gem 'better_errors'
+  gem 'meta_request'
+end
+
+group :test do
+  gem "rspec-rails"
+  gem "database_cleaner"
+  gem "shoulda"
+  gem "capybara"
+end
 
 
 # Gems used only for assets and not required
@@ -23,7 +42,7 @@ end
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
