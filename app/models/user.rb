@@ -1,9 +1,25 @@
 class User < ActiveRecord::Base
-has_secure_password
-validates :email, presence: true #, uniquness: true
 
-  attr_accessible :avatar, :biography, :email, :first_name, :last_name, :location, :role, :username, :password,:password_confirmation
-  has_many :comments
-  has_many :albums
-  has_many :photos, through: :albums
+	attr_accessible :avatar, :biography, :email, :first_name, :last_name, :location, :role, :username, :password,:password_confirmation
+
+	has_secure_password
+
+	validates :first_name, presence: true, length:{minimum:2}
+	validates :last_name, presence: true, length:{minimum:2}
+	validates :username, presence: true, uniqueness: { case_sensitive: false }
+	validates :email, presence: true, uniqueness: { case_sensitive: false }, on: :create
+	validates :password, presence: true, length:{in:(6..20), message: "6 to 20 characters!"}
+	validates :password_confirmation, presence: true
+	validates :biography, length: {maximum: 250,
+		too_long: "%{count} characters is the maximum allowed" } 
+
+	  has_many :comments
+	  has_many :albums
+	  has_many :photos, through: :albums
+
+
+
+	def role?(role)
+ 		self.role == role
+	end
 end

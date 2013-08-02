@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
- # GET /comments
+ load_and_authorize_resource
+  # GET /comments
   # GET /comments.json
   def index
     @comments = Comment.all

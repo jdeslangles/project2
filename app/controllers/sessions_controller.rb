@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
   def create
 
   	user=User.find_by_email(params[:email]) 
+  	
   	if user && user.authenticate(params[:password])
 		session[:user_id]=user.id
 		redirect_to root_url, notice:"loggedin!" 
@@ -16,7 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-  	ession[:user]=nil 
-  	redirect_to root_url, notice:"loggedout!"
+  	session[:user_id] = nil 
+  	redirect_to root_url, notice:"You've logout!"
   end
 end

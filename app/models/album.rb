@@ -1,5 +1,14 @@
 class Album < ActiveRecord::Base
+
+  attr_accessible :description, :name, :privacy
+
+  validates :name, presence: true, length:{in:(2..20)}
+  validates :description, length:{ maximum: 250,
+  	too_long: "%{count} characters is the maximum allowed"}
+  validates :privacy, presence: true
+
   belongs_to :user
   has_many :photos
-  attr_accessible :description, :name, :privacy
+
+  
 end

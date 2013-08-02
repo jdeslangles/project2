@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
 
-
 	helper_method:current_user 
 	def current_user
 			@current_user ||= User.find(session[:user_id]) if session[:user_id] 
@@ -15,7 +14,7 @@ class ApplicationController < ActionController::Base
 
 		def authenticate 
 			unless logged_in?
-			flash[:error]="Youmustbeloggedintoaccessthissectionofthesite"
+			flash[:error]="You must be logged into access this section of the site"
 			redirect_to login_url
 			end 
 		end
