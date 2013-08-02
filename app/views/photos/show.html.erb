@@ -1,0 +1,27 @@
+<h1>Photo</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @photo.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @photo.description %>
+</p>
+
+<p>
+  <b>Photo picture:</b>
+  <% image_tag @photo.photo_picture.url %>
+</p>
+
+<p>
+  <b>Album:</b>
+  <%= @photo.album %>
+</p>
+
+
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>

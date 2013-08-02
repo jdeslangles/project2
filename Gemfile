@@ -7,7 +7,25 @@ gem 'rails', '3.2.14'
 
 gem 'pg'
 gem 'cancan'
+gem 'rmagick'
+gem 'carrierwave'
 
+group :development do
+  gem 'rspec-rails'
+  gem 'pry-rails'
+  gem 'pry-debugger'
+  gem 'pry-stack_explorer'
+  gem 'binding_of_caller'
+  gem 'better_errors'
+  gem 'meta_request'
+end
+
+group :test do
+  gem "rspec-rails"
+  gem "database_cleaner"
+  gem "shoulda"
+  gem "capybara"
+end
 
 
 # Gems used only for assets and not required

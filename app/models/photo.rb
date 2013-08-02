@@ -1,6 +1,8 @@
 class Photo < ActiveRecord::Base
 
-  attr_accessible :description, :name
+  attr_accessible :description, :name, :photo_picture
+
+  mount_uploader :photo_picture, PhotoPictureUploader
   
   validates :name, presence: true
   validates :description, length:{ maximum: 250,

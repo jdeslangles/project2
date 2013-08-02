@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 
 	has_secure_password
 
+	mount_uploader :avatar, AvatarUploader
+
 	validates :first_name, presence: true, length:{minimum:2}
 	validates :last_name, presence: true, length:{minimum:2}
 	validates :username, presence: true, uniqueness: { case_sensitive: false }
@@ -13,13 +15,14 @@ class User < ActiveRecord::Base
 	validates :biography, length: {maximum: 250,
 		too_long: "%{count} characters is the maximum allowed" } 
 
-	  has_many :comments
-	  has_many :albums
-	  has_many :photos, through: :albums
+	has_many :comments
+	has_many :albums
+	has_many :photos, through: :albums
 
 
 
 	def role?(role)
  		self.role == role
 	end
+
 end
