@@ -10,7 +10,6 @@
     <th>Biography</th>
     <th>Location</th>
     <th>Role</th>
-    <th>Password digest</th>
     <th></th>
     <th></th>
     <th></th>
@@ -22,11 +21,10 @@
     <td><%= user.last_name %></td>
     <td><%= user.email %></td>
     <td><%= user.username %></td>
-    <td><%= user.avatar %></td>
+    <td><%= image_tag user.avatar.url %></td>
     <td><%= user.biography %></td>
     <td><%= user.location %></td>
     <td><%= user.role %></td>
-    <td><%= user.password_digest %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -24,7 +24,7 @@
 
 <p>
   <b>Avatar:</b>
-  <% image_tag @user.avatar.url %>
+  <%= image_tag @user.avatar.url %>
 </p>
 
 <p>
@@ -36,17 +36,6 @@
   <b>Location:</b>
   <%= @user.location %>
 </p>
-
-<p>
-  <b>Role:</b>
-  <%= @user.role %>
-</p>
-
-<p>
-  <b>Password digest:</b>
-  <%= @user.password_digest %>
-</p>
-
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

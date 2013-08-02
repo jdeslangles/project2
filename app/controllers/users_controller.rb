@@ -45,7 +45,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'To do item was successfully created.' }
+        @user.authenticate(params[:user][:password])
+        session[:user_id] = @user.id
+        format.html { redirect_to @user, notice: 'User profile successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
