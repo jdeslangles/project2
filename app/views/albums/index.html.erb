@@ -5,7 +5,6 @@
     <th>Name</th>
     <th>Description</th>
     <th>Privacy</th>
-    <th>User</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,7 +15,6 @@
     <td><%= album.name %></td>
     <td><%= album.description %></td>
     <td><%= album.privacy %></td>
-    <td><%= album.user %></td>
     <td><%= link_to 'Show', user_album_path(album.user, album) %></td>
     <td><%= link_to 'Edit', edit_user_album_path(album.user, album) %></td>
     <td><%= link_to 'Destroy', [album.user,album], method: :delete, data: { confirm: 'Are you sure?' } %></td>

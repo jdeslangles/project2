@@ -17,13 +17,13 @@
     <td><%= photo.description %></td>
     <td><%= image_tag photo.photo_picture.url %></td>
     <td><%= photo.album_id %></td>
-    <td><%= link_to 'Show', user_album_photo_path(photo) %></td>
-    <td><%= link_to 'Edit', edit_user_album_photo_path(photo) %></td>
-    <td><%= link_to 'Destroy', user_album_photo_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', user_album_photo_path(photo.album.user, photo.album, photo) %></td>
+    <td><%= link_to 'Edit', edit_user_album_photo_path(photo.album.user, photo.album, photo) %></td>
+    <td><%= link_to 'Destroy', [photo.album.user,photo.album,photo], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Photo', new_album_photo_path %>
+<%= link_to 'New Photo', new_user_album_photo_path %>
