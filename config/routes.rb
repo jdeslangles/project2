@@ -1,5 +1,7 @@
 Project2::Application.routes.draw do
 
+  devise_for :users
+
   resources :users
   resources :albums do
     resources :photos

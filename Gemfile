@@ -9,6 +9,7 @@ gem 'pg'
 gem 'cancan'
 gem 'rmagick'
 gem 'carrierwave'
+gem 'devise'
 
 group :development do
   gem 'rspec-rails'
