@@ -41,11 +41,12 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Photo.new(params[:photo])
+    @album = Album.find(params[:album_id])
+    @photo = @album.photos.build(params[:photo])
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo successfully uploaded.' }
+        format.html { redirect_to @photo, notice: 'Photo successfully created.' }
         format.json { render json: @photo, status: :created, location: @photo }
       else
         format.html { render action: "new" }
@@ -53,6 +54,7 @@ class PhotosController < ApplicationController
       end
     end
   end
+
 
   # PUT /photos/1
   # PUT /photos/1.json
