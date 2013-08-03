@@ -22,11 +22,11 @@
 
 <p>
   <%= @album.photos.each do |photo|%>
-  <%= link_to photo.name, user_album_photo_path(photo) %>
+  <%= link_to photo.name, user_album_photo_path(photo.album.user, photo.album, photo) %>
   <% end %>
 </p>
 
-<%= link_to 'Add Photo', new_user_album_photo_path(@album) %> |
-<%= link_to 'Edit Album', edit_user_album_path(@album) %> |
+<%= link_to 'Add Photo', new_user_album_photo_path(@album.user, @album) %> |
+<%= link_to 'Edit Album', edit_user_album_path(@album.user, @album) %> |
 <%= link_to 'Back to User Profile', user_path %>
 raise
