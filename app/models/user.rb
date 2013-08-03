@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
 		too_long: "%{count} characters is the maximum allowed" }
 
 	has_many :comments
-	has_many :albums
-	has_many :photos, through: :albums
+	has_many :albums, dependent: :destroy
+	has_many :photos, through: :albums, dependent: :destroy
 
  	accepts_nested_attributes_for :albums
 

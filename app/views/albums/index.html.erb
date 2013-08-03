@@ -17,9 +17,9 @@
     <td><%= album.description %></td>
     <td><%= album.privacy %></td>
     <td><%= album.user %></td>
-    <td><%= link_to 'Show', album %></td>
-    <td><%= link_to 'Edit', edit_user_album_path(album) %></td>
-    <td><%= link_to 'Destroy', user_album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', user_album_path(album.user, album) %></td>
+    <td><%= link_to 'Edit', edit_user_album_path(album.user, album) %></td>
+    <td><%= link_to 'Destroy', [album.user,album], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

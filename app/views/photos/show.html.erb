@@ -23,5 +23,6 @@
 </p>
 
 
-<%= link_to 'Edit', edit_user_album_photo_path(@photo) %> |
-<%= link_to 'Back', user_album_path(@album) %>
+<%= link_to 'Edit', edit_user_album_photo_path(@photo.album.user, @photo.album, @photo) %> |
+<%= link_to 'Back', user_album_path(@photo.album.user, @photo.album) %> |
+<%= link_to 'Destroy', user_album_photo_path(@photo.album.user, @photo.album, @photo), method: :delete, data: { confirm: 'Are you sure?' } %>

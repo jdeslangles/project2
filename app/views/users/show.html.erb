@@ -39,10 +39,11 @@
 
 <p>
   <b>Albums:</b>
-  <%= @user.albums.each do |album|%>
-  <%= link_to album.name, user_album_path(album) %>
+  <% @user.albums.each do |album|%>
+  <%= link_to album.name, user_album_path(album.user, album) %>
   <% end %>
 </p>
 
+<%= link_to 'Create Album', new_user_album_path(@user) %> |
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @album %> |
+<%= link_to 'Show', user_album_path(@album.user, @album) %> |
 <%= link_to 'Back', user_albums_path %>

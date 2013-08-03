@@ -49,7 +49,7 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to @album, notice: 'Photo successfully created.' }
+        format.html { redirect_to user_album_path(@album.user, @album), notice: 'Photo successfully created.' }
         format.json { render json: @photo, status: :created, location: @photo }
       else
         format.html { render action: "new" }
@@ -66,7 +66,7 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.update_attributes(params[:photo])
-        format.html { redirect_to @photo, notice: 'To do item was successfully updated.' }
+        format.html { redirect_to user_album_photo_path(@photo.album.user, @photo.album, @photo), notice: 'To do item was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -78,11 +78,12 @@ class PhotosController < ApplicationController
   # DELETE /photos/1
   # DELETE /photos/1.json
   def destroy
+    @album = Album.find(params[:album_id])
     @photo = Photo.find(params[:id])
     @photo.destroy
 
     respond_to do |format|
-      format.html { redirect_to photos_url }
+      format.html { redirect_to user_album_path(@album.user, @album) }
       format.json { head :no_content }
     end
   end
