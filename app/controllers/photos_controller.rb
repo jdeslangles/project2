@@ -26,7 +26,8 @@ class PhotosController < ApplicationController
   # GET /photos/new
   # GET /photos/new.json
   def new
-    @photo = Photo.new
+     @album = Album.find(params[:album_id])
+      @photo = Photo.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,7 +49,7 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo successfully created.' }
+        format.html { redirect_to @album, notice: 'Photo successfully created.' }
         format.json { render json: @photo, status: :created, location: @photo }
       else
         format.html { render action: "new" }
