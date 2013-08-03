@@ -7,10 +7,11 @@ Project2::Application.routes.draw do
   end
 
   resources :comments
+  resources :sessions, only: [:new, :create, :destroy]
+
+  get '/my_profile', to: 'users#my_profile', as: :my_profile
+  get'login', to:'sessions#new'
 
   root to: "users#index"
 
-  get'login', to:'sessions#new'
-
-  resources :sessions, only: [:new, :create, :destroy]
 end

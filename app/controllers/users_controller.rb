@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
+
+
  # GET /users
   # GET /users.json
   def index
@@ -9,6 +11,11 @@ class UsersController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @users }
     end
+  end
+
+  def my_profile
+    @user = current_user
+    render :show
   end
 
   # GET /users/1
