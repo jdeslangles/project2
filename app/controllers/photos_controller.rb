@@ -14,6 +14,7 @@ class PhotosController < ApplicationController
   # GET /photos/1
   # GET /photos/1.json
   def show
+    @album = Album.find(params[:album_id])
     @photo = Photo.find(params[:id])
 
     respond_to do |format|
@@ -35,6 +36,7 @@ class PhotosController < ApplicationController
 
   # GET /photos/1/edit
   def edit
+    # @album = Album.find(params[:album_id])
     @photo = Photo.find(params[:id])
   end
 

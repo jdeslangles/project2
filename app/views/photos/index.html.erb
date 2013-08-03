@@ -16,10 +16,10 @@
     <td><%= photo.name %></td>
     <td><%= photo.description %></td>
     <td><%= image_tag photo.photo_picture.url %></td>
-    <td><%= photo.album %></td>
-    <td><%= link_to 'Show', album_photo %></td>
+    <td><%= photo.album_id %></td>
+    <td><%= link_to 'Show', album_photo_path(photo) %></td>
     <td><%= link_to 'Edit', edit_album_photo_path(photo) %></td>
-    <td><%= link_to 'Destroy', album_photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', album_photo_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

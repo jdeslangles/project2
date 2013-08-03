@@ -20,6 +20,12 @@
   <%= @album.user %>
 </p>
 
+<p>
+  <%= @album.photos.each do |photo|%>
+  <%= link_to photo.name, album_photo_path(photo) %>
+  <% end %>
+</p>
+
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>
