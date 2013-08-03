@@ -42,10 +42,10 @@ class AlbumsController < ApplicationController
   # POST /albums.json
   def create
     @album = Album.new(params[:album])
-
+    @album.user = current_user
     respond_to do |format|
       if @album.save
-        format.html { redirect_to @album, notice: 'To do item was successfully created.' }
+        format.html { redirect_to @album, notice: 'Album successfully created.' }
         format.json { render json: @album, status: :created, location: @album }
       else
         format.html { render action: "new" }
