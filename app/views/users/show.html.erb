@@ -37,5 +37,12 @@
   <%= @user.location %>
 </p>
 
+<p>
+  <b>Albums:</b>
+  <%= @user.albums.each do |album|%>
+  <%= link_to album.name, album_path(album) %>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

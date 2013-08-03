@@ -36,7 +36,7 @@ class PhotosController < ApplicationController
 
   # GET /photos/1/edit
   def edit
-    # @album = Album.find(params[:album_id])
+    @album = Album.find(params[:album_id])
     @photo = Photo.find(params[:id])
   end
 
