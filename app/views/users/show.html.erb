@@ -40,7 +40,7 @@
 <p>
   <b>Albums:</b>
   <%= @user.albums.each do |album|%>
-  <%= link_to album.name, album_path(album) %>
+  <%= link_to album.name, user_album_path(album) %>
   <% end %>
 </p>
 

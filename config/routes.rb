@@ -1,9 +1,11 @@
 Project2::Application.routes.draw do
 
-  resources :users
-  resources :albums do
-    resources :photos
+  resources :users do
+    resources :albums do
+      resources :photos
+    end
   end
+
   resources :comments
 
   root to: "users#index"

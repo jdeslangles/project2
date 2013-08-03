@@ -13,13 +13,13 @@ class User < ActiveRecord::Base
 	validates :password, presence: true, length:{in:(6..20), message: "6 to 20 characters!"}
 	validates :password_confirmation, presence: true
 	validates :biography, length: {maximum: 250,
-		too_long: "%{count} characters is the maximum allowed" } 
+		too_long: "%{count} characters is the maximum allowed" }
 
 	has_many :comments
 	has_many :albums
 	has_many :photos, through: :albums
 
-
+ 	accepts_nested_attributes_for :albums
 
 	def role?(role)
  		self.role == role
