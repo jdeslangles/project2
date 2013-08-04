@@ -1,6 +1,30 @@
 class PhotosController < ApplicationController
  load_and_authorize_resource
 
+# Photo wall methods
+  def photo_wall
+    @photos = Photo.all
+    render :photo_wall
+  end
+
+  def like_wall
+      @user = User.find(params[:user_id])
+      @album = Album.find(params[:album_id])
+      @photo = Photo.find(params[:id])
+      @photo.liked_by current_user
+      redirect_to :photo_wall
+  end
+
+  def unlike_wall
+      @user = User.find(params[:user_id])
+      @album = Album.find(params[:album_id])
+      @photo = Photo.find(params[:id])
+      @photo.disliked_by current_user
+      redirect_to :photo_wall
+  end
+
+
+# Voting methods
   def like
     if params[:id]
       @photo = Photo.find(params[:id])
@@ -18,7 +42,7 @@ class PhotosController < ApplicationController
   end
 
 
- # GET /photos
+  # GET /photos
   # GET /photos.json
   def index
     @user = User.find(params[:user_id])

@@ -81,6 +81,8 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    masonry-rails (0.2.0)
+      rails
     meta_request (0.2.7)
       callsite
       rack-contrib
@@ -188,6 +190,7 @@ DEPENDENCIES
   database_cleaner
   debugger
   jquery-rails
+  masonry-rails
   meta_request
   pg
   pry-debugger
