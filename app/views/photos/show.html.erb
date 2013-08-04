@@ -19,6 +19,7 @@
   </p>
 
   <div class="links">
+    <%= link_to 'Like', like_user_album_photo_path(@photo.album.user, @photo.album, @photo) %>
     <%= link_to 'Edit', edit_user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-warning btn-mini" %>
     <%= link_to 'Destroy', user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %>
     <%= link_to 'Back to Album', user_album_path(@photo.album.user, @photo.album), class:"btn btn-inverse btn-mini" %>
