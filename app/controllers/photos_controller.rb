@@ -1,6 +1,14 @@
 class PhotosController < ApplicationController
  load_and_authorize_resource
- # GET /photos
+
+
+  def photo_wall
+    @photos = Photo.all
+    render :photo_wall
+  end
+
+
+  # GET /photos
   # GET /photos.json
   def index
     @user = User.find(params[:user_id])
