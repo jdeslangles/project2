@@ -7,7 +7,7 @@ Project2::Application.routes.draw do
       resources :photos do
         member do
           post :like
-          post :dislike
+          post :unlike
         end
       end
     end
