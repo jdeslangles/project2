@@ -2,11 +2,20 @@ class PhotosController < ApplicationController
  load_and_authorize_resource
 
   def vote
-    @user = User.find(params[:user_id])
-    @album = Album.find(params[:album_id])
-    @photo = Photo.find(params[:id])
-    @photo.liked_by @user
-
+    if params[:id]
+      @photo = Photo.find(params[:id])
+      if current_user.voted_up_on? @photo
+        if @photo.downvote_from current_user
+          render :json => {:status => "success", :downvote => "true"}
+        end
+      else
+        if @photo.liked_by current_user
+          render :json => {:status => "success", :downvote => "false"}
+        end
+      end
+    else
+      render :json => {:status => "fail", :message => "No object ID passed."}
+    end
   end
 
  # GET /photos

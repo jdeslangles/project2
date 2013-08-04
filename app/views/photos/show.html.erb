@@ -21,9 +21,9 @@
   <div class="voting">
     <%if current_user.voted_down_on? @photo %>
       <%= link_to 'Like', like_user_album_photo_path(@photo.album.user, @photo.album, @photo) %>
-      <% else %>
-        <%= link_to 'Dislike', dislike_user_album_photo_path(@photo.album.user, @photo.album, @photo) %>
-      <%end%>
+    <% else %>
+      <%= link_to 'Dislike', dislike_user_album_photo_path(@photo.album.user, @photo.album, @photo) %>
+    <%end%>
   </div>
 
   <div class="links">
