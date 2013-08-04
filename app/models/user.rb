@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
 	has_many :photos, through: :albums, dependent: :destroy
 
  	accepts_nested_attributes_for :albums
+ 	# scope :not_admin_users, lambda { where(role: "registered")}
 
 	def role?(role)
  		self.role == role
