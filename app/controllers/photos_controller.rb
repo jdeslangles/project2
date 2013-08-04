@@ -1,5 +1,14 @@
 class PhotosController < ApplicationController
  load_and_authorize_resource
+
+  def vote
+    @user = User.find(params[:user_id])
+    @album = Album.find(params[:album_id])
+    @photo = Photo.find(params[:id])
+    @photo.liked_by @user
+
+  end
+
  # GET /photos
   # GET /photos.json
   def index
