@@ -1,52 +1,52 @@
 <div class="span8">
-<h1>My Profile</h1>
+  <h1>My Profile</h1>
 
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <b>First name:</b>
-  <%= @user.first_name %>
-</p>
+  <p>
+    <b>First name:</b>
+    <%= @user.first_name %>
+  </p>
 
-<p>
-  <b>Last name:</b>
-  <%= @user.last_name %>
-</p>
+  <p>
+    <b>Last name:</b>
+    <%= @user.last_name %>
+  </p>
 
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
+  <p>
+    <b>Email:</b>
+    <%= @user.email %>
+  </p>
 
-<p>
-  <b>Username:</b>
-  <%= @user.username %>
-</p>
+  <p>
+    <b>Username:</b>
+    <%= @user.username %>
+  </p>
 
-<p>
-  <b>Avatar:</b>
-  <%= image_tag @user.avatar.url %>
-</p>
+  <p>
+    <b>Avatar:</b>
+    <%= image_tag @user.avatar.url %>
+  </p>
 
-<p>
-  <b>Biography:</b>
-  <%= @user.biography %>
-</p>
+  <p>
+    <b>Biography:</b>
+    <%= @user.biography %>
+  </p>
 
-<p>
-  <b>Location:</b>
-  <%= @user.location %>
-</p>
+  <p>
+    <b>Location:</b>
+    <%= @user.location %>
+  </p>
 
-<p>
-  <b>Albums:</b>
-  <% @user.albums.each do |album|%>
-  <%= link_to album.name, user_album_path(album.user, album) %>
-  <% end %>
-</p>
-
-<%= link_to 'Create Album', new_user_album_path(@user) %> |
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-
+  <p>
+    <b>Albums:</b>
+    <% @user.albums.each do |album|%>
+    <%= link_to album.name, user_album_path(album.user, album) %>
+    <% end %>
+  </p>
+  <div class="links">
+    <%= link_to 'Create Album', new_user_album_path(@user), class:"btn btn-success btn-mini" %>
+    <%= link_to 'Edit', edit_user_path(@user), class:"btn btn-warning btn-mini" %>
+    <%= link_to 'Back', users_path, class:"btn btn-inverse btn-mini" %>
+  </div>
 </div>

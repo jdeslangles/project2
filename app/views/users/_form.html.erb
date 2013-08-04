@@ -50,7 +50,9 @@
   <div class="field"> <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %><br />
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="links">
+    <%= f.submit 'Submit', class: "btn btn-success btn-mini"  %>
+    <%= link_to 'View', @user, class:"btn btn-info btn-mini" %>
+    <%= link_to 'Back to Users', users_path, class:"btn btn-inverse btn-mini" %>
   </div>
 <% end %>
