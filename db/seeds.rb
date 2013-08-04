@@ -5,5 +5,5 @@ u2 = User.create(first_name:'Julien', last_name: 'Deslangles-Blanch', email: 'ju
 u3 = User.create(first_name:'Anna', last_name: 'Hendre', email: 'hendrannah@gmail.com', username: 'hendranna', avatar: 'https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash4/65209_10200980814715040_1935773394_n.jpg', biography: 'Ruby enthusiast and serious cat lover', location: 'Montegrotto Terme', role: 'admin', password:'password', password_confirmation:'password'  )
 
 Album.destroy_all
-a1 = Album.new(name:'Summer', description:'photos from the summer of 2013', privacy: 'false', user_id: u1.id)
-a2 = Album.new(name:'Winter', description:'photos from the winter of 2011', privacy: 'false', user_id: u2.id)
+
+Photo.destroy_all
