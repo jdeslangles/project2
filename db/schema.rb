@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130803114110) do
+ActiveRecord::Schema.define(:version => 20130804104530) do
 
   create_table "albums", :force => true do |t|
     t.string   "name"
@@ -39,13 +39,21 @@ ActiveRecord::Schema.define(:version => 20130803114110) do
     t.string   "name"
     t.text     "description"
     t.integer  "album_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.string   "photo_picture"
     t.integer  "popularity"
+    t.integer  "cached_votes_total", :default => 0
+    t.integer  "cached_votes_score", :default => 0
+    t.integer  "cached_votes_up",    :default => 0
+    t.integer  "cached_votes_down",  :default => 0
   end
 
   add_index "photos", ["album_id"], :name => "index_photos_on_album_id"
+  add_index "photos", ["cached_votes_down"], :name => "index_photos_on_cached_votes_down"
+  add_index "photos", ["cached_votes_score"], :name => "index_photos_on_cached_votes_score"
+  add_index "photos", ["cached_votes_total"], :name => "index_photos_on_cached_votes_total"
+  add_index "photos", ["cached_votes_up"], :name => "index_photos_on_cached_votes_up"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
