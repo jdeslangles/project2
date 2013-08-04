@@ -1,10 +1,25 @@
 class PhotosController < ApplicationController
  load_and_authorize_resource
 
-
   def photo_wall
     @photos = Photo.all
     render :photo_wall
+  end
+
+  def like
+    if params[:id]
+      @photo = Photo.find(params[:id])
+      @photo.liked_by current_user
+      redirect_to user_album_photo_path(@photo.album.user, @photo.album, @photo)
+    end
+  end
+
+  def dislike
+    if params[:id]
+      @photo = Photo.find(params[:id])
+      @photo.disliked_by current_user
+      redirect_to user_album_photo_path(@photo.album.user, @photo.album, @photo)
+    end
   end
 
 
