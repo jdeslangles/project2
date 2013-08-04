@@ -24,17 +24,10 @@
   </p>
 
   <div class="links"> 
-
     
-      <%= link_to 'Add Photo', new_user_album_photo_path(@album.user, @album), class:"btn btn-success btn-mini" %>
-    
-   
-
-    
+    <% if can? :manage, @album %>
+      <%= link_to 'Add Photo', new_user_album_photo_path(@album.user, @album), class:"btn btn-success btn-mini"%>
       <%= link_to 'Edit Album', edit_user_album_path(@album.user, @album), class:"btn btn-warning btn-mini" %>
-    
-
-    <% if can? :destroy, @album %>
       <%= link_to 'Destroy', user_album_path(@album.user, @album), class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
 
