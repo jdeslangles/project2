@@ -1,9 +1,10 @@
-<div class="span8">
+<div>
 <h1>Wall of Fame</h1>
-
-<% @photos.each do |photo| %>
-  <div>
-    <%= image_tag photo.photo_picture %><br>
-    <%= photo.name %>
+  <div id="container">
+  <% @photos.each do |photo| %>
+    <div class="item">
+      <%= image_tag photo.photo_picture %>
+    </div>
+  <%end%>
   </div>
-<%end%>
+</div>
