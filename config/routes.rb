@@ -6,6 +6,8 @@ Project2::Application.routes.draw do
     resources :albums do
       resources :photos do
         member do
+          post :like_wall
+          post :unlike_wall
           post :like
           post :unlike
         end
