@@ -16,10 +16,11 @@
 <%end%>
 
 <% if current_user %>
-	<p>hello,<%= current_user.email %></p>
-	<%= link_to 'Logout' , session_path(session), method: :delete ,data: {confirm:'Are you sure?'} %>
+	<p> Hello, <%= current_user.email %></p>
+	<%= link_to 'Logout' , destroy_user_session_path(session), method: :delete ,data: {confirm:'Are you sure?'} %>
 <% else %>
-<%= link_to 'Please login', login_path %>
+<%= link_to 'Sign in', new_user_session_path %>
+<%= link_to "Register", new_user_registration_path %>
 <%end%>
 
 <%= yield %>

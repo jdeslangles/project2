@@ -1,6 +1,9 @@
 Project2::Application.routes.draw do
 
-  devise_for :users
+ devise_for :users do
+    get "/login" => "devise/sessions#new"
+    get "/register" => "devise/registrations#new"
+  end
 
   resources :users
   resources :albums do
@@ -10,7 +13,9 @@ Project2::Application.routes.draw do
 
   root to: "users#index"
 
-  get'login', to:'sessions#new'
+  
+  	get'login', to:'devise/sessions#new'
+ 
 
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:create, :destroy]
 end
