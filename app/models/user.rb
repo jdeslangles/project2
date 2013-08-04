@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	acts_as_voter
 
 	attr_accessible :avatar, :biography, :email, :first_name, :last_name, :location, :role, :username, :password,:password_confirmation
 
@@ -19,11 +20,10 @@ class User < ActiveRecord::Base
 	has_many :albums, dependent: :destroy
 	has_many :photos, through: :albums, dependent: :destroy
 
- 	accepts_nested_attributes_for :albums
- 	# scope :not_admin_users, lambda { where(role: "registered")}
+	accepts_nested_attributes_for :albums
 
 	def role?(role)
- 		self.role == role
+			self.role == role
 	end
 
 end

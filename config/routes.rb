@@ -2,7 +2,12 @@ Project2::Application.routes.draw do
 
   resources :users do
     resources :albums do
-      resources :photos
+      resources :photos do
+        member do
+          post :like
+          post :unlike
+        end
+      end
     end
   end
 

@@ -18,6 +18,20 @@
     <%= image_tag @photo.photo_picture.url %>
   </p>
 
+  <p>
+    <b>Number of Likes:</b>
+      <%= @photo.likes.size %>
+  </p>
+
+
+  <div class="voting">
+    <% if current_user.voted_up_on? @photo %>
+      <%= button_to 'Unlike', unlike_user_album_photo_path(@photo.album.user, @photo.album, @photo) %>
+    <%else %>
+       <%= button_to 'Like', like_user_album_photo_path(@photo.album.user, @photo.album, @photo) %>
+    <%end%>
+  </div>
+
   <div class="links">
     <% if can? :edit, @album %>
       <%= link_to 'Edit', edit_user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-warning btn-mini" %>

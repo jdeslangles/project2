@@ -1,5 +1,23 @@
 class PhotosController < ApplicationController
  load_and_authorize_resource
+
+  def like
+    if params[:id]
+      @photo = Photo.find(params[:id])
+      @photo.liked_by current_user
+      redirect_to user_album_photo_path(@photo.album.user, @photo.album, @photo)
+    end
+  end
+
+  def unlike
+    if params[:id]
+      @photo = Photo.find(params[:id])
+      @photo.disliked_by current_user
+      redirect_to user_album_photo_path(@photo.album.user, @photo.album, @photo)
+    end
+  end
+
+
  # GET /photos
   # GET /photos.json
   def index

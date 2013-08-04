@@ -1,4 +1,5 @@
 class Photo < ActiveRecord::Base
+  acts_as_votable
 
   attr_accessible :description, :name, :photo_picture, :album_id
 
