@@ -9,7 +9,7 @@ class PhotosController < ApplicationController
     end
   end
 
-  def dislike
+  def unlike
     if params[:id]
       @photo = Photo.find(params[:id])
       @photo.disliked_by current_user
