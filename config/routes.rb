@@ -24,6 +24,6 @@ Project2::Application.routes.draw do
   get '/my_profile', to: 'users#my_profile', as: :my_profile
   get'login', to:'sessions#new'
 
-  root to: "users#index"
+  root to: 'photos#photo_wall'
 
 end
