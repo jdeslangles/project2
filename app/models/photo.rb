@@ -6,7 +6,7 @@ class Photo < ActiveRecord::Base
 
   validates :name, presence: true
   validates :description, length:{ maximum: 250,
-  	too_long: "%{count} characters is the maximum allowed"}
+  	too_long: "%{count} characters is the maximum allowed."}
   validates :photo_picture, presence: true
 
   belongs_to :album

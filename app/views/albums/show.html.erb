@@ -1,31 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="span8">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @album.name %>
-</p>
+  <p>
+    <b>Name:</b>
+    <%= @album.name %>
+  </p>
 
-<p>
-  <b>Description:</b>
-  <%= @album.description %>
-</p>
+  <p>
+    <b>Description:</b>
+    <%= @album.description %>
+  </p>
 
-<p>
-  <b>Privacy:</b>
-  <%= @album.privacy %>
-</p>
+  <p>
+    <b>Privacy:</b>
+    <%= @album.privacy %>
+  </p>
 
-<p>
-  <b>User:</b>
-  <%= @album.user %>
-</p>
 
-<p>
-  <%= @album.photos.each do |photo|%>
-  <%= link_to photo.name, album_photo_path(photo) %>
-  <% end %>
-</p>
+  <p>
+    <b>Photos:</b>
+    <% @album.photos.each do |photo|%>
+    <%= link_to photo.name, user_album_photo_path(photo.album.user, photo.album, photo) %>
+    <% end %>
+  </p>
 
-<%= link_to 'Add Photo', new_album_photo_path(@album) %> |
-<%= link_to 'Edit Album', edit_album_path(@album) %> |
-<%= link_to 'Back to User Profile', user_path %>
+  <div class="links">
+    <%= link_to 'Add Photo', new_user_album_photo_path(@album.user, @album), class:"btn btn-success btn-mini" %>
+    <%= link_to 'Edit Album', edit_user_album_path(@album.user, @album), class:"btn btn-warning btn-mini" %>
+    <%= link_to 'Destroy', user_album_path(@album.user, @album), class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Back to User Profile', user_path(@album.user), class:"btn btn-inverse btn-mini" %>
+  </div>
+</div>

@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_filter:authenticate_user!
   load_and_authorize_resource
+
+
  # GET /users
   # GET /users.json
   def index
@@ -10,6 +12,11 @@ class UsersController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @users }
     end
+  end
+
+  def my_profile
+    @user = current_user
+    render :show
   end
 
   # GET /users/1
@@ -64,7 +71,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'To do item was successfully updated.' }
+        format.html { redirect_to @user, notice: 'User profile successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

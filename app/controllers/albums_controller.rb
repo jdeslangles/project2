@@ -45,7 +45,7 @@ class AlbumsController < ApplicationController
     @album.user = current_user
     respond_to do |format|
       if @album.save
-        format.html { redirect_to @album, notice: 'Album successfully created.' }
+        format.html { redirect_to user_album_path(@album.user, @album), notice: 'Album successfully created.' }
         format.json { render json: @album, status: :created, location: @album }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class AlbumsController < ApplicationController
 
     respond_to do |format|
       if @album.update_attributes(params[:album])
-        format.html { redirect_to @album, notice: 'To do item was successfully updated.' }
+        format.html { redirect_to user_album_path(@album.user, @album), notice: 'Album was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -77,7 +77,7 @@ class AlbumsController < ApplicationController
     @album.destroy
 
     respond_to do |format|
-      format.html { redirect_to albums_url }
+      format.html { redirect_to user_path(@album.user) }
       format.json { head :no_content }
     end
   end

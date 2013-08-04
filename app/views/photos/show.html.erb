@@ -1,27 +1,26 @@
-<h1>Photo</h1>
+<div class="span8">
+  <h1>Photo</h1>
 
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @photo.name %>
-</p>
+  <p>
+    <b>Name:</b>
+    <%= @photo.name %>
+  </p>
 
-<p>
-  <b>Description:</b>
-  <%= @photo.description %>
-</p>
+  <p>
+    <b>Description:</b>
+    <%= @photo.description %>
+  </p>
 
-<p>
-  <b>Photo picture:</b>
-  <%= image_tag @photo.photo_picture.url %>
-</p>
+  <p>
+    <b>Photo picture:</b>
+    <%= image_tag @photo.photo_picture.url %>
+  </p>
 
-<p>
-  <b>Album:</b>
-  <%= @photo.album %>
-</p>
-
-
-<%= link_to 'Edit', edit_album_photo_path(@photo) %> |
-<%= link_to 'Back', album_path(@album) %>
+  <div class="links">
+    <%= link_to 'Edit', edit_user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-warning btn-mini" %>
+    <%= link_to 'Destroy', user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Back to Album', user_album_path(@photo.album.user, @photo.album), class:"btn btn-inverse btn-mini" %>
+  </div>
+</div>

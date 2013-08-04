@@ -1,20 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="span8">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Content:</b>
-  <%= @comment.content %>
-</p>
+  <p>
+    <b>Content:</b>
+    <%= @comment.content %>
+  </p>
 
-<p>
-  <b>User:</b>
-  <%= @comment.user %>
-</p>
+  <p>
+    <b>User:</b>
+    <%= @comment.user %>
+  </p>
 
-<p>
-  <b>Album:</b>
-  <%= @comment.album %>
-</p>
+  <p>
+    <b>Album:</b>
+    <%= @comment.album %>
+  </p>
 
-
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+  <div class="links">
+    <%= link_to 'Edit', edit_comment_path(@comment), class:"btn btn-warning btn-mini" %>
+    <%= link_to 'Back', comments_path, class:"btn btn-inverse btn-mini" %>
+  </div>
+</div>

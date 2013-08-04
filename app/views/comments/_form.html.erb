@@ -23,7 +23,9 @@
     <%= f.label :album %><br />
     <%= f.text_field :album %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="links">
+    <%= f.submit, class: "btn btn-success btn-mini" %>
+    <%= link_to 'View', @comment, class:"btn btn-info btn-mini" %>
+    <%= link_to 'Back', comments_path, class:"btn btn-inverse btn-mini" %>
   </div>
 <% end %>

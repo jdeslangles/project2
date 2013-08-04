@@ -11,3 +11,18 @@
  *= require_self
  *= require_tree .
  */
+
+
+.nav-user {
+  color: grey;
+  padding: 10px 0 0 435px ;
+}
+
+.nav-signup {
+  color: grey;
+  padding: 0 0 0 625px ;
+}
+
+/*.links {
+text-align: center;
+}*/
