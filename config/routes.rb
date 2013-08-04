@@ -11,11 +11,12 @@ Project2::Application.routes.draw do
           post :like
           post :unlike
         end
+        resources :comments
       end
     end
   end
 
-  resources :comments
+
   resources :sessions, only: [:new, :create, :destroy]
 
 

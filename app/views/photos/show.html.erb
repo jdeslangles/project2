@@ -36,19 +36,14 @@
     <p>
       <b>Comments:</b>
     </p>
-      <%if current_user%>
-      <%else%>
-      <p>Please <%= link_to 'login', login_path%>to leave a comment.</p>
-      <%end%>
-      <ul class="track_comments">
-        <% @photo.comments.each do |comment| %>
-          <li>
-            <%= comment.description %><br>
-            <%= comment.user.name %> on <%= comment.created_at.strftime('%c') %>
-          </li>
-        <% end %>
-      </ul>
-      <%= render partial: 'comments/form' %>
+    <ul class="track_comments">
+      <% @photo.comments.each do |comment| %>
+        <li>
+          <%= comment.description %><br>
+        </li>
+      <% end %>
+    </ul>
+      <%=render partial: "comments/form" %>
   </div>
 
   <div class="links">

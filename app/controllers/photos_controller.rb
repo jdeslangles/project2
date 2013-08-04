@@ -61,6 +61,7 @@ class PhotosController < ApplicationController
     @user = User.find(params[:user_id])
     @album = Album.find(params[:album_id])
     @photo = Photo.find(params[:id])
+    @comment = Comment.new
 
     respond_to do |format|
       format.html # show.html.erb
