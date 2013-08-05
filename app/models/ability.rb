@@ -10,9 +10,10 @@ class Ability
       can :manage, User do |u|
         u.id == user.id
       end
-      can :vote, Photo
+      can :like, Photo
+      can :unlike, Photo
       can :read, :all
-       can :create, Comment
+      can :create, Comment
       can :manage, Album do |a|
         a.user.id == user.id
       end
