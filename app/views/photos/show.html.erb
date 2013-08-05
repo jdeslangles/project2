@@ -26,17 +26,17 @@
 
   <div class="voting">
     <% if current_user %>
-      <% if current_user.voted_up_on? photo %>
-        <%= button_to 'Unlike', unlike_wall_user_album_photo_path(photo.album.user, photo.album, photo) %>
+      <% if current_user.voted_up_on? @photo %>
+        <%= button_to 'Unlike', unlike_user_album_photo_path(@photo.album.user, @photo.album, @photo) %>
       <% else %>
-        <%= button_to 'Like', like_wall_user_album_photo_path(photo.album.user, photo.album, photo) %>
+        <%= button_to 'Like', like_user_album_photo_path(@photo.album.user, @photo.album, @photo) %>
       <% end %>
     <% else %>
     <%end%>
   </div>
 
   <div class="links">
-    <% if can? :edit, @album %>
+    <% if can? :edit, @photo %>
       <%= link_to 'Edit', edit_user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-warning btn-mini" %>
       <%= link_to 'Destroy', user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
