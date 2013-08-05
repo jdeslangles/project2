@@ -8,6 +8,7 @@ class Ability
     else
       can :read, :all
       can :create, User
+      can :photo_wall, Photo
     end
   end
 end
