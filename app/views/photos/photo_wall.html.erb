@@ -7,11 +7,14 @@
       <b>Number of Likes:</b>
       <%= photo.likes.size %>
         <div class="voting">
-          <% if current_user.voted_up_on? photo %>
-            <%= button_to 'Unlike', unlike_wall_user_album_photo_path(photo.album.user, photo.album, photo) %>
+          <% if current_user %>
+            <% if current_user.voted_up_on? photo %>
+              <%= button_to 'Unlike', unlike_wall_user_album_photo_path(photo.album.user, photo.album, photo) %>
+            <% else %>
+              <%= button_to 'Like', like_wall_user_album_photo_path(photo.album.user, photo.album, photo) %>
+            <% end %>
           <% else %>
-            <%= button_to 'Like', like_wall_user_album_photo_path(photo.album.user, photo.album, photo) %>
-          <% end %>
+          <%end%>
         </div>
     </div>
   <% end %>
