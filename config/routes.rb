@@ -21,6 +21,9 @@ Project2::Application.routes.draw do
 
   get '/photo_wall', to: 'photos#photo_wall', as: :photo_wall
 
+
+  get '/photo_wall', to: 'photos#photo_wall', as: :photo_wall
+
   get '/my_profile', to: 'users#my_profile', as: :my_profile
   get'login', to:'sessions#new'
 

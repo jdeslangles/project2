@@ -7,3 +7,4 @@ u3 = User.create(first_name:'Anna', last_name: 'Hendre', email: 'hendrannah@gmai
 Album.destroy_all
 
 Photo.destroy_all
+
