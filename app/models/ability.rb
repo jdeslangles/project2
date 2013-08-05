@@ -12,13 +12,14 @@ class Ability
       end
       can :vote, Photo
       can :read, :all
-      can :create, Comment
-      can :destroy, Comment
       can :manage, Album do |a|
         a.user.id == user.id
       end
       can :manage, Photo do |p|
         p.album.user.id == user.id
+      end
+      can :manage, Comment do |c|
+        c.photo.album.user.id == user.id
       end
 
     else
