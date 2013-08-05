@@ -36,7 +36,7 @@
   </div>
 
   <div class="links">
-    <% if can? :edit, @photo %>
+    <% if can? :manage, @photo %>
       <%= link_to 'Edit', edit_user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-warning btn-mini" %>
       <%= link_to 'Destroy', user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>

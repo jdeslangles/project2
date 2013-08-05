@@ -14,8 +14,13 @@ class Ability
       can :read, :all
       can :create, Comment
       can :destroy, Comment
-      can :manage, Album 
-      can :manage, Photo
+      can :manage, Album do |a|
+        a.user.id == user.id
+      end
+      can :manage, Photo do |p|
+        p.album.user.id == user.id
+      end
+
     else
       can :read, :all
       can :photo_wall, Photo
