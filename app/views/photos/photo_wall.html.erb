@@ -1,18 +1,32 @@
 <div>
 <h1>Wall of Fame</h1>
-  <div id="container">
+
+  <div id="portfolio">
+
   <% @photos.each do |photo| %>
+
     <div class="item">
-      <%= image_tag photo.photo_picture %>
-      <b>Number of Likes:</b>
-      <%= photo.likes.size %>
-        <div class="voting">
-          <% if current_user.voted_up_on? photo %>
-            <%= button_to 'Unlike', unlike_wall_user_album_photo_path(photo.album.user, photo.album, photo) %>
-          <% else %>
-            <%= button_to 'Like', like_wall_user_album_photo_path(photo.album.user, photo.album, photo) %>
-          <% end %>
+      <%= image_tag photo.photo_picture, :class =>"thumb", :width => 150, :height => 100 %>
+
+      <div class="info">
+        <%= image_tag photo.photo_picture, :class => "full", :width => 640, :height => 300 %>
+
+<!--           <div class="votes">
+            <b>Number of Likes:</b>
+            <%= photo.likes.size %>
+          </div>
+
+          <div class="voting">
+            <% if current_user.voted_up_on? photo %>
+              <%= button_to 'Unlike', unlike_wall_user_album_photo_path(photo.album.user, photo.album, photo) %>
+              <% else %>
+                <%= button_to 'Like', like_wall_user_album_photo_path(photo.album.user, photo.album, photo) %>
+              <% end %>
+
+            </div>
+ -->
         </div>
+
     </div>
   <% end %>
   </div>
