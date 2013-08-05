@@ -14,23 +14,25 @@
 //= require jquery_ujs
 //= require imagesLoaded.pkgd
 //= require masonry.pkgd
+//= require jquery.isotope
 //= require_tree .
 
 
 $(function() {
-
     var $portfolio = $('#portfolio');
     $portfolio.imagesLoaded( function() {
         $portfolio.masonry({
           columnWidth: 170,
-          itemSelector: '.item'
+          itemSelector: '.item',
+          gutterWidth: 20
         });
 
         var width = $portfolio.find('.item:first').width();
         var height = $portfolio.find('.item:first').height();
         var cssinitial =  {width:width, height:height};
 
-        $portfolio.find('img.thumb').click(function(event) {
+        $('body #portfolio img.thumb').on('click', function(event) {
+        // $portfolio.find('img.thumb').on('click', function(event) {
 
           // Close all unfolded element
           $portfolio.find('.unfold').removeClass('unfold').css(cssinitial);
@@ -49,6 +51,11 @@ $(function() {
             width:widthfinal,
             height:heightfinal
           });
+        });
+        $('body #portfolio img.full').on('click', function(event) {
+        // $portfolio.find('img.full').on('click', function(event) {
+          $(this).closest('.item').removeClass('unfold').css(cssinitial);
+          $portfolio.masonry();
         });
     });
 });

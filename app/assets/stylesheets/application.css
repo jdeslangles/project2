@@ -32,8 +32,6 @@ text-align: center;
   margin: 0 auto;
 }
 
-
-
 /*.item {
   float: left;
   width: 150px;
@@ -49,7 +47,6 @@ text-align: center;
 }
 
 .item.unfold {
-  height: 320px;
   width: 630px;
 }
 .item.unfold .info{
