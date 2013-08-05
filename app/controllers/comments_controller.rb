@@ -16,7 +16,6 @@ class CommentsController < ApplicationController
   def show
     @comment = Comment.find(params[:id])
 
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @comment }
@@ -46,8 +45,6 @@ class CommentsController < ApplicationController
     params[:comment][:photo_id] = params[:id]
     params[:comment][:user_id] = current_user.id
     @comment = Comment.new(params[:comment])
-
-
 
     respond_to do |format|
       if @comment.save

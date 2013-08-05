@@ -20,7 +20,7 @@ class Ability
         p.album.user.id == user.id
       end
       can :destroy, Comment do |c|
-        c.photo.album.user.id == user.id
+        (c.photo.album.user.id == user.id if (c.photo and c.photo.album.user)) || c.user.id == user.id
       end
 
     else
