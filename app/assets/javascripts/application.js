@@ -33,7 +33,7 @@ $(function() {
         $portfolio.find('img.thumb').click(function(event) {
 
           // Close all unfolded element
-          $portfolio.find('.unfold').removeClass('unfold');
+          $portfolio.find('.unfold').removeClass('unfold').css(cssinitial);
 
           // Unfold this
           $(this).closest('.item').addClass('unfold');
