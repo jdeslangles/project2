@@ -1,21 +1,23 @@
 Project2::Application.routes.draw do
 
-  resources :photos
+  # resources :photos
+  # resources :comments, only: [] do
+  #   post '/', action: 'create', as: :create, on: :collection
+  # end
 
   resources :users do
     resources :albums do
       resources :photos do
         member do
+          post '/comment', action: 'create', controller: 'comments'
           post :like_wall
           post :unlike_wall
           post :like
           post :unlike
         end
-        resources :comments
       end
     end
   end
-
 
   resources :sessions, only: [:new, :create, :destroy]
 

@@ -39,11 +39,11 @@
     <ul class="track_comments">
       <% @photo.comments.each do |comment| %>
         <li>
-          <%= comment.description %><br>
+          <%= comment.content %><br>
         </li>
       <% end %>
     </ul>
-      <%=render partial: "comments/form" %>
+      <%= render partial: "comments/form" %>
   </div>
 
   <div class="links">

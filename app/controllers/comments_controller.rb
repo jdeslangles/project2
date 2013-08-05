@@ -41,13 +41,15 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    params[:comment][:photo_id] = params[:photo_id]
+    params[:comment][:photo_id] = params[:id]
     params[:comment][:user_id] = current_user.id
     @comment = Comment.new(params[:comment])
 
+
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment successfully created.' }
+        photo_path = user_album_photo_path(@comment.photo.album.user.id, @comment.photo.album.id, @comment.photo.id)
+        format.html { redirect_to photo_path, notice: 'Comment successfully created.' }
         format.json { render json: @comment, status: :created, location: @comment }
       else
         format.html { render action: "new" }
