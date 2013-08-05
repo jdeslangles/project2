@@ -19,8 +19,8 @@ Project2::Application.routes.draw do
     end
   end
 
-  resources :sessions, only: [:new, :create, :destroy]
-
+  resources :comments
+  resources :sessions, only: [:new, :read, :create, :destroy]
 
   get '/photo_wall', to: 'photos#photo_wall', as: :photo_wall
 
