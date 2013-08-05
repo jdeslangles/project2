@@ -12,4 +12,81 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require imagesLoaded.pkgd
+//= require masonry.pkgd
 //= require_tree .
+
+
+$(function() {
+
+    var $portfolio = $('#portfolio');
+    $portfolio.imagesLoaded( function() {
+        $portfolio.masonry({
+          columnWidth: 170,
+          itemSelector: '.item'
+        });
+
+        var width = $portfolio.find('.item:first').width();
+        var height = $portfolio.find('.item:first').height();
+        var cssinitial =  {width:width, height:height};
+
+        $portfolio.find('img.thumb').click(function(event) {
+
+          // Close all unfolded element
+          $portfolio.find('.unfold').removeClass('unfold');
+
+          // Unfold this
+          $(this).closest('.item').addClass('unfold');
+
+          // Reload masonry?
+          $portfolio.masonry();
+
+
+          // var elem = $(this);
+          // $portfolio.find('.unfold').removeClass('unfold').css(cssinitial);
+          // var unfold = elem.parent().addClass('unfold');
+          // $portfolio.masonry('reloadItems');
+          // var widthfinal = unfold.width();
+          // var heightfinal = unfold.height();
+          // unfold.css(cssinitial).animate({
+          //   width:widthfinal,
+          //   height:heightfinal
+          // })
+          // e.preventDefault();
+        })
+
+    });
+
+    // $('.item img.thumb').on('click', function(event) {
+    //   // var img = $(this).find('img'),
+    //   //       width = img.width(),
+    //   //       height = img.height();
+
+    //   $container.find('.unfold').removeClass('unfold');
+
+    //   var item = $(this).closest('.item');
+
+    //   item.addClass('unfold');
+
+    //   $container.masonry('reload');
+
+    // });
+
+
+});
+
+
+
+
+// jQuery(function($){
+//   var portfolio = $("#portfolio");
+//   portfolio.masonry({
+//     isAnimated: true,
+//     itemSelector: ".item",
+//     columnWidth: 200
+//   });
+
+
+
+
+// });
