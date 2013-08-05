@@ -10,12 +10,12 @@ class Ability
       can :read, :all
       can :create, Comment
       can :manage, Album 
-      can :manage, Photo  
       can :manage, User do |u|
         u.id == user.id
       end
     else
       can :read, :all
+      can :photo_wall, Photo
       can :create, User
     end
   end
