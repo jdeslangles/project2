@@ -26,7 +26,6 @@
 
   <div class="links">
     <%= f.submit 'Submit', class: "btn btn-success btn-mini" %>
-    <%= link_to 'View', user_album_photo_path, class:"btn btn-info btn-mini" %>
-    <%= link_to 'Back to Album', user_album_path, class:"btn btn-inverse btn-mini" %>
+    <%= link_to 'Back to Album', user_album_path(@album.user, @album), class:"btn btn-inverse btn-mini" %>
   </div>
 <% end %>

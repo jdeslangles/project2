@@ -1,6 +1,48 @@
 class PhotosController < ApplicationController
  load_and_authorize_resource
- # GET /photos
+
+# Photo wall methods
+  def photo_wall
+    @photos = Photo.all
+    render :photo_wall
+  end
+
+  def like_wall
+      @user = User.find(params[:user_id])
+      @album = Album.find(params[:album_id])
+      @photo = Photo.find(params[:id])
+      @photo.liked_by current_user
+      redirect_to :photo_wall
+  end
+
+  def unlike_wall
+      @user = User.find(params[:user_id])
+      @album = Album.find(params[:album_id])
+      @photo = Photo.find(params[:id])
+      @photo.disliked_by current_user
+      redirect_to :photo_wall
+  end
+
+
+# Voting methods
+  def like
+    if params[:id]
+      @photo = Photo.find(params[:id])
+      @photo.liked_by current_user
+      redirect_to user_album_photo_path(@photo.album.user, @photo.album, @photo)
+    end
+  end
+
+  def unlike
+    if params[:id]
+      @photo = Photo.find(params[:id])
+      @photo.disliked_by current_user
+      redirect_to user_album_photo_path(@photo.album.user, @photo.album, @photo)
+    end
+  end
+
+
+  # GET /photos
   # GET /photos.json
   def index
     @user = User.find(params[:user_id])
@@ -19,6 +61,7 @@ class PhotosController < ApplicationController
     @user = User.find(params[:user_id])
     @album = Album.find(params[:album_id])
     @photo = Photo.find(params[:id])
+   
 
     respond_to do |format|
       format.html # show.html.erb
@@ -42,6 +85,7 @@ class PhotosController < ApplicationController
   def edit
     @album = Album.find(params[:album_id])
     @photo = Photo.find(params[:id])
+    
   end
 
   # POST /photos
@@ -49,6 +93,7 @@ class PhotosController < ApplicationController
   def create
     @album = Album.find(params[:album_id])
     @photo = @album.photos.build(params[:photo])
+    
 
     respond_to do |format|
       if @photo.save
@@ -66,6 +111,7 @@ class PhotosController < ApplicationController
   # PUT /photos/1.json
   def update
     @photo = Photo.find(params[:id])
+    
 
     respond_to do |format|
       if @photo.update_attributes(params[:photo])
@@ -83,6 +129,7 @@ class PhotosController < ApplicationController
   def destroy
     @album = Album.find(params[:album_id])
     @photo = Photo.find(params[:id])
+    
     @photo.destroy
 
     respond_to do |format|

@@ -10,6 +10,8 @@ gem 'cancan'
 gem 'rmagick'
 gem 'carrierwave'
 gem 'devise'
+gem 'masonry-rails'
+gem 'acts_as_votable', '~> 0.5.0'
 
 group :development do
   gem 'rspec-rails'

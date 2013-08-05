@@ -8,16 +8,27 @@ Project2::Application.routes.draw do
 
   resources :users, except: [:new, :create, :update] do
     resources :albums do
-      resources :photos
+      resources :photos do
+        member do
+          post :like_wall
+          post :unlike_wall
+          post :like
+          post :unlike
+        end
+      end
     end
   end
 
-  resources :comments
+  resources :comments 
+  
 #  resources :sessions, only: [:new, :create, :destroy]
+  # resources :sessions, only: [:new, :read, :create, :destroy]
 
+
+  get '/photo_wall', to: 'photos#photo_wall', as: :photo_wall
 
   get '/my_profile', to: 'users#my_profile', as: :my_profile
 
-  root to: "users#index"
+  root to: 'photos#photo_wall'
 
 end

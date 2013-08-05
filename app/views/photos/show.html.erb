@@ -18,9 +18,28 @@
     <%= image_tag @photo.photo_picture.url %>
   </p>
 
+  <p>
+    <b>Number of Likes:</b>
+      <%= @photo.likes.size %>
+  </p>
+
+
+  <div class="voting">
+    <% if current_user %>
+      <% if current_user.voted_up_on? @photo %>
+        <%= button_to 'Unlike', unlike_user_album_photo_path(@photo.album.user, @photo.album, @photo) %>
+      <% else %>
+        <%= button_to 'Like', like_user_album_photo_path(@photo.album.user, @photo.album, @photo) %>
+      <% end %>
+    <% else %>
+    <%end%>
+  </div>
+
   <div class="links">
-    <%= link_to 'Edit', edit_user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-warning btn-mini" %>
-    <%= link_to 'Destroy', user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% if can? :manage, @photo %>
+      <%= link_to 'Edit', edit_user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-warning btn-mini" %>
+      <%= link_to 'Destroy', user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
     <%= link_to 'Back to Album', user_album_path(@photo.album.user, @photo.album), class:"btn btn-inverse btn-mini" %>
   </div>
 </div>
