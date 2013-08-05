@@ -6,7 +6,7 @@ Project2::Application.routes.draw do
     get 'login', to: 'devise/sessions#new'
   end
 
-  resources :users, except: [:new, :create, :edit, :update] do
+  resources :users, except: [:new, :create, :update] do
     resources :albums do
       resources :photos
     end
