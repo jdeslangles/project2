@@ -19,6 +19,7 @@
   <div class="links">
    <% if can? :edit, @comment %>
       <%= link_to 'Edit', edit_comment_path(@comment), class:"btn btn-warning btn-mini" %>
+      <%= link_to 'Delete', destroy_comment_path(@comment), class:"btn btn-warning btn-mini" %>
     <% end %>
     <%= link_to 'Back', comments_path, class:"btn btn-inverse btn-mini" %>
   </div>
