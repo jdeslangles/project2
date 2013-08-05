@@ -39,14 +39,21 @@
     <p>
       <b>Comments:</b>
     </p>
-    <ul class="track_comments">
+    <%if current_user %>
+    <% else %>
+      <p> Please <%= link_to 'log in', login_path %> to leave a comment </p>
+    <% end %>
+    <ul class="photo_comments">
       <% @photo.comments.each do |comment| %>
         <li>
-          <%= comment.content %><br>
+          <%= comment.content %>
+          <%if can? :destroy, comment %>
+            <%=link_to 'delete', comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
         </li>
       <% end %>
     </ul>
-      <%= render partial: "comments/form" %>
+      <%= render partial: "comments/form" if can? :create, @comment %>
   </div>
 
   <div class="links">
