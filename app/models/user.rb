@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-	
+
   acts_as_voter
 
 	attr_accessible :avatar, :biography, :email, :first_name, :last_name, :location, :role, :username, :password,:password_confirmation, :remember_me
@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
 	# validates :email, presence: true, uniqueness: true => on: :create
 	validates :biography, length: {maximum: 250,
 		too_long: "%{count} characters is the maximum allowed." }
+
+      validate :avatar_size_validation
+
 
 	has_many :comments
 	has_many :albums, dependent: :destroy
@@ -45,6 +48,11 @@ class User < ActiveRecord::Base
   private
   def set_default_role
     self.role ||= 'registered'
+  end
+
+  private
+  def avatar_size_validation
+    errors[:avatar] << "should be less than 1MB" if avatar.size > 1.megabyte
   end
 
 end

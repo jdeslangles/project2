@@ -1,13 +1,14 @@
 <div>
 <h1>Wall of Fame</h1>
-
+<br>
+<br>
   <div id="portfolio">
 
   <% if @photos %>
   <% @photos.each do |photo| %>
     <div class="item">
 
-      <%= image_tag photo.photo_picture, :data => {:id => photo.id, :'full-width' => photo.photo_picture.image_width, :'full-height' => photo.photo_picture.image_height }, :id => "thumb_#{photo.id}", :class =>"thumb", :width => 150 %>
+      <%= image_tag photo.photo_picture.photowall.url, :data => {:id => photo.id, :'full-width' => photo.photo_picture.image_width, :'full-height' => photo.photo_picture.image_height }, :id => "thumb_#{photo.id}", :class =>"thumb", :width => 150 %>
 
       <div class="info">
         <%= image_tag photo.photo_picture.photowall.url, :data => {:id => photo.id}, :id => "full_#{photo.id}",:class => "full" %>
@@ -17,7 +18,7 @@
             <%= photo.likes.size %>
           </div>
 
-          <div class="voting">
+<!--           <div class="voting">
             <% if current_user %>
               <% if current_user.voted_up_on? photo %>
                 <%= button_to 'Unlike', unlike_wall_user_album_photo_path(photo.album.user, photo.album, photo) %>
@@ -25,11 +26,19 @@
                   <%= button_to 'Like', like_wall_user_album_photo_path(photo.album.user, photo.album, photo) %>
                 <% end %>
               <%end%>
+            </div> -->
+            <div>
+            <p>Check out more of 's work on their <%= link_to("page", user_path(photo.album.user)) %></p>
             </div>
+
         </div>
 
     </div>
   <% end %>
   </div>
 <%end%>
+<br>
+<br>
 </div>
+<br>
+<br>
