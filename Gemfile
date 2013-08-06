@@ -7,7 +7,7 @@ gem 'rails', '3.2.14'
 
 gem 'pg'
 gem 'cancan'
-gem 'rmagick'
+gem 'mini_magick'
 gem 'carrierwave'
 gem 'devise'
 gem 'masonry-rails'
