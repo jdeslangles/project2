@@ -1,8 +1,8 @@
 <%= search_form_for @q, url: search_path, html: {method: :post} do |f| %>
 
   <p>
-    <%= f.label :name_cont, 'Search for a Photo!' %>
-    <%= f.text_field :name_cont %>
+    <%= f.label :name_or_description_cont, 'Search for a Photo!' %>
+    <%= f.text_field :name_or_description_cont %>
   </p>
  <p>
     <%= f.submit %>
@@ -12,7 +12,6 @@
 <% if flash %>
   <p><%= flash[:error] %></p>
 <% end %>
-
 
   <ul>
     <% @photos.each do |photo| %>

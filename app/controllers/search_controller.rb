@@ -4,7 +4,7 @@ class SearchController < ApplicationController
     if params[:q]
       @photos = @q.result(distinct: :true)
       if @q.result.empty?
-        flash[:error] = "No matches for #{params[:q][:name_cont]}."
+        flash[:error] = "No matches for #{params[:q][:name_or_description_cont]}."
       else
         flash[:error] = nil
       end
