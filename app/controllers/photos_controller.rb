@@ -61,7 +61,8 @@ class PhotosController < ApplicationController
     @user = User.find(params[:user_id])
     @album = Album.find(params[:album_id])
     @photo = Photo.find(params[:id])
-   
+    @comment = Comment.new
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -85,7 +86,7 @@ class PhotosController < ApplicationController
   def edit
     @album = Album.find(params[:album_id])
     @photo = Photo.find(params[:id])
-    
+
   end
 
   # POST /photos
@@ -93,7 +94,7 @@ class PhotosController < ApplicationController
   def create
     @album = Album.find(params[:album_id])
     @photo = @album.photos.build(params[:photo])
-    
+
 
     respond_to do |format|
       if @photo.save
@@ -111,7 +112,7 @@ class PhotosController < ApplicationController
   # PUT /photos/1.json
   def update
     @photo = Photo.find(params[:id])
-    
+
 
     respond_to do |format|
       if @photo.update_attributes(params[:photo])
@@ -129,7 +130,7 @@ class PhotosController < ApplicationController
   def destroy
     @album = Album.find(params[:album_id])
     @photo = Photo.find(params[:id])
-    
+
     @photo.destroy
 
     respond_to do |format|
