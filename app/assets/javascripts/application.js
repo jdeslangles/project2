@@ -17,47 +17,76 @@
 //= require jquery.isotope
 //= require_tree .
 
-
 $(function() {
     var $portfolio = $('#portfolio');
+
     $portfolio.imagesLoaded( function() {
+
         $portfolio.masonry({
           columnWidth: 170,
           itemSelector: '.item',
           gutterWidth: 20
         });
 
-        var width = $portfolio.find('.item:first').width();
-        var height = $portfolio.find('.item:first').height();
-        var cssinitial =  {width:width, height:height};
+        // $portfolio.find('img.thumb').each(function(index, image) {
+        //   $(image).attr('data-orig-width', image.clientWidth);
+        //   $(image).attr('data-orig-height', image.clientHeight);
+        // });
 
         // $('body #portfolio img.thumb').on('click', function(event) {
         $portfolio.find('img.thumb').on('click', function(event) {
 
-          // Close all unfolded element
-          $portfolio.find('.unfold').removeClass('unfold').css(cssinitial);
+          var thumb = $(this),
+                full = $(this).parent().find('img.full'),
+                item = $(this).parent(),
+                not_current = $portfolio.find('.item').not(item);
 
-          // Unfold this
-          $(this).closest('.item').addClass('unfold');
+          not_current.each(function(index, current_item) {
 
+            var current_thumb = $(current_item).find('img.thumb'),
+                  current_item = $(current_item);
+
+            current_thumb.removeAttr('height');
+            current_thumb.attr('width', '150px');
+            current_item.height('');
+            current_item.width('150px');
+            current_item.attr('data-scaled', 'false');
+                        current_item.removeClass('unfold');
+
+          });
+
+          //$portfolio.masonry();
+
+
+          if (item.attr('data-scaled') == "true") {
+            // thumb.attr('height', thumb.attr('data-orig-height'));
+            thumb.attr('width', '150px');
+            // item.height(thumb.attr('data-orig-height'));
+            item.width('150px');
+            item.attr('data-scaled', 'false');
+                        item.removeClass('unfold');
+
+          } else {
+            thumb.attr('width', thumb.attr('data-full-width'));
+            thumb.attr('height', thumb.attr('data-full-height'));
+            item.width(thumb.attr('data-full-width'));
+            item.height(parseInt(thumb.attr('data-full-height'), 10) + 50);
+            item.attr('data-scaled', 'true');
+            item.addClass('unfold');
+          }
           // Reload masonry
           $portfolio.masonry();
-
-          // Animate unfolding
-          var unfold = $(this).parent().addClass('unfold');
-          var widthfinal = unfold.width();
-          var heightfinal = unfold.height();
-          unfold.css(cssinitial).animate({
-            width:widthfinal,
-            height:heightfinal
-          });
         });
 
    // $('body #portfolio img.thumb').on('click', function(event) {
-        $portfolio.find('img.full').on('click', function(event) {
-          $(this).closest('.item').removeClass('unfold').css(cssinitial);
-          $portfolio.masonry();
-        });
+        // $portfolio.find('img.full').on('click', function(event) {
+        //   var thumb = $(this).parent().find('img.thumb'),
+        //         full = $(this),
+        //         item = $(this).parent();
+
+
+        //   $portfolio.masonry();
+        // });
     });
 });
 

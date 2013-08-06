@@ -45,17 +45,36 @@ text-align: center;
   width: 150px;
 }
 
+/*.item img {
+  width: 150px;
+}*/
+
+.item img {
+  max-width: none !important;
+}
+
+.item img.full {
+  width: auto;
+}
+
 .item .info {
   display: none;
 }
 
-.item.unfold {
-  width: 630px;
+.item .full {
+  display: none;
 }
+
+/*.item.unfold {
+  width: 630px;
+}*/
 .item.unfold .info{
   display: block;
 }
 
+/*.item.unfold .full {
+  display: block;
+}
 .item.unfold .thumb {
   display: none;
-}
+}*/
