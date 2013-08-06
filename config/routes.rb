@@ -1,6 +1,6 @@
 Project2::Application.routes.draw do
 
-  devise_for :user 
+  devise_for :user, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'

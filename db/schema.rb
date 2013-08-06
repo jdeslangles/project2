@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20130804111301) do
+ActiveRecord::Schema.define(:version => 20130806140014) do
 
   create_table "albums", :force => true do |t|
     t.string   "name"
@@ -56,7 +55,6 @@ ActiveRecord::Schema.define(:version => 20130804111301) do
   add_index "photos", ["cached_votes_total"], :name => "index_photos_on_cached_votes_total"
   add_index "photos", ["cached_votes_up"], :name => "index_photos_on_cached_votes_up"
 
-
   create_table "users", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -78,11 +76,12 @@ ActiveRecord::Schema.define(:version => 20130804111301) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
 
   create_table "votes", :force => true do |t|
     t.integer  "votable_id"

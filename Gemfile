@@ -10,6 +10,7 @@ gem 'cancan'
 gem 'rmagick'
 gem 'carrierwave'
 gem 'devise'
+gem 'omniauth-google-oauth2'
 gem 'masonry-rails'
 gem 'acts_as_votable', '~> 0.5.0'
 
