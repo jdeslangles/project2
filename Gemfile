@@ -9,6 +9,7 @@ gem 'pg'
 gem 'cancan'
 gem 'mini_magick'
 gem 'carrierwave'
+gem 'devise'
 gem 'masonry-rails'
 gem 'acts_as_votable', '~> 0.5.0'
 

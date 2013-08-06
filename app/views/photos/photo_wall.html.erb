@@ -3,9 +3,10 @@
 
   <div id="portfolio">
 
+  <% if @photos %>
   <% @photos.each do |photo| %>
-
     <div class="item">
+
       <%= image_tag photo.photo_picture, :data => {:id => photo.id, :'full-width' => photo.photo_picture.image_width, :'full-height' => photo.photo_picture.image_height }, :id => "thumb_#{photo.id}", :class =>"thumb", :width => 150 %>
 
       <div class="info">
@@ -29,4 +30,5 @@
     </div>
   <% end %>
   </div>
+<%end%>
 </div>

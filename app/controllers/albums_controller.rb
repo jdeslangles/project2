@@ -36,6 +36,7 @@ class AlbumsController < ApplicationController
   # GET /albums/1/edit
   def edit
     @album = Album.find(params[:id])
+
   end
 
   # POST /albums
@@ -43,6 +44,7 @@ class AlbumsController < ApplicationController
   def create
     @album = Album.new(params[:album])
     @album.user = current_user
+
     respond_to do |format|
       if @album.save
         format.html { redirect_to user_album_path(@album.user, @album), notice: 'Album successfully created.' }
@@ -58,6 +60,7 @@ class AlbumsController < ApplicationController
   # PUT /albums/1.json
   def update
     @album = Album.find(params[:id])
+
 
     respond_to do |format|
       if @album.update_attributes(params[:album])
@@ -75,6 +78,7 @@ class AlbumsController < ApplicationController
   def destroy
     @album = Album.find(params[:id])
     @album.destroy
+
 
     respond_to do |format|
       format.html { redirect_to user_path(@album.user) }

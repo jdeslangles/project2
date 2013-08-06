@@ -27,15 +27,18 @@
     <td><%= user.location %></td>
     <td><%= user.role %></td>
     <td><%= link_to 'View', user, class:"btn btn-info btn-mini" %></td>
-    <td><%= link_to 'Edit', edit_user_path(user), class:"btn btn-warning btn-mini" %></td>
-    <td><%= link_to 'Destroy', user, class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+    <%if can? :update, user and current_user.role == 'registered' || 'admin' %>
+        <td><%= link_to 'Edit', edit_user_registration_path(user), class:"btn btn-warning btn-mini" %></td>
+        <td><%= link_to 'Destroy', user, class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <%end%>
   </tr>
 <% end %>
 </table>
 
 <br />
     <div class="links">
-        <%= link_to 'New User', new_user_path, class:"btn btn-success btn-large" %>
+        <%= link_to 'New User', new_user_registration_path, class:"btn btn-success btn-large" %>
     </div>
 </div>
 

@@ -1,11 +1,16 @@
 Project2::Application.routes.draw do
 
-  resources :photos
+  devise_for :user 
 
-  resources :users do
+  devise_scope :user do
+    get 'login', to: 'devise/sessions#new'
+  end
+
+  resources :users, except: [:new, :create, :update, :edit] do
     resources :albums do
       resources :photos do
         member do
+          post '/comment', action: 'create', controller: 'comments'
           post :like_wall
           post :unlike_wall
           post :like
@@ -16,13 +21,9 @@ Project2::Application.routes.draw do
   end
 
   resources :comments
-  resources :sessions, only: [:new, :create, :destroy]
-
 
   get '/photo_wall', to: 'photos#photo_wall', as: :photo_wall
-
   get '/my_profile', to: 'users#my_profile', as: :my_profile
-  get'login', to:'sessions#new'
 
   root to: 'photos#photo_wall'
 

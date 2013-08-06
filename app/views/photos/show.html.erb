@@ -1,8 +1,6 @@
 <div class="span8">
   <h1>Photo</h1>
 
-  <p id="notice"><%= notice %></p>
-
   <p>
     <b>Name:</b>
     <%= @photo.name %>
@@ -23,18 +21,43 @@
       <%= @photo.likes.size %>
   </p>
 
-
   <div class="voting">
-    <% if current_user.voted_up_on? @photo %>
-      <%= button_to 'Unlike', unlike_user_album_photo_path(@photo.album.user, @photo.album, @photo) %>
-    <%else %>
-       <%= button_to 'Like', like_user_album_photo_path(@photo.album.user, @photo.album, @photo) %>
+    <% if can? [:like, :unlike], @photo %>
+      <% if current_user.voted_up_on? @photo %>
+        <%= button_to 'Unlike', unlike_user_album_photo_path(@photo.album.user, @photo.album, @photo) %>
+      <% else %>
+        <%= button_to 'Like', like_user_album_photo_path(@photo.album.user, @photo.album, @photo) %>
+      <% end %>
+    <% else %>
     <%end%>
   </div>
 
+  <div class="comments_container">
+    <p>
+      <b>Comments:</b>
+    </p>
+    <%if current_user %>
+    <% else %>
+      <p> Please <%= link_to 'log in', login_path %> to leave a comment </p>
+    <% end %>
+    <ul class="photo_comments">
+      <% @photo.comments.each do |comment| %>
+        <li>
+          <%= comment.content %>
+          <%if can? :destroy, comment %>
+            <%=link_to 'delete', comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+      <%= render partial: "comments/form" if can? :create, @comment %>
+  </div>
+
   <div class="links">
-    <%= link_to 'Edit', edit_user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-warning btn-mini" %>
-    <%= link_to 'Destroy', user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% if can? :manage, @photo.album.user %>
+      <%= link_to 'Edit', edit_user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-warning btn-mini" %>
+      <%= link_to 'Destroy', user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
     <%= link_to 'Back to Album', user_album_path(@photo.album.user, @photo.album), class:"btn btn-inverse btn-mini" %>
   </div>
 </div>
