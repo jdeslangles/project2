@@ -41,17 +41,17 @@
   <p>
     <b>Albums:</b>
     <% @user.albums.each do |album|%>
-    <%= link_to album.name, user_album_path(album.user, album) %>
+      <%= link_to album.name, user_album_path(album.user, album) %>
     <% end %>
   </p>
   <div class="links">
 
-    <% if can? :update, @user %>
-      <%= link_to 'Create Album', new_user_album_path(@user), class:"btn btn-success btn-mini" %>
+    <%= link_to 'Create Album', new_user_album_path(@user), class:"btn btn-success btn-mini" %>
 
-      <%= link_to 'Edit', edit_user_path(@user), class:"btn btn-warning btn-mini" %>
-    <% end %>
+      <%= link_to 'Edit', edit_user_registration_path(@user), class:"btn btn-warning btn-mini" %>
 
     <%= link_to 'Back', users_path, class:"btn btn-inverse btn-mini" %>
+
+
   </div>
 </div>
