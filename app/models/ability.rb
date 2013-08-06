@@ -14,12 +14,8 @@ class Ability
       can :unlike, Photo
       can :read, :all
       can :create, Comment
-      can :manage, Album do |a|
-        a.user.id == user.id
-      end
-      can :manage, Photo do |p|
-        p.album.user.id == user.id
-      end
+      can :manage, Album
+      can :manage, Photo
       can :destroy, Comment do |c|
         (c.photo.album.user.id == user.id if (c.photo and c.photo.album.user)) || c.user.id == user.id
       end
