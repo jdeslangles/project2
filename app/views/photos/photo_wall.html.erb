@@ -10,7 +10,7 @@
       <%= image_tag photo.photo_picture, :data => {:id => photo.id, :'full-width' => photo.photo_picture.image_width, :'full-height' => photo.photo_picture.image_height }, :id => "thumb_#{photo.id}", :class =>"thumb", :width => 150 %>
 
       <div class="info">
-        <%= image_tag photo.photo_picture, :data => {:id => photo.id}, :id => "full_#{photo.id}",:class => "full" %>
+        <%= image_tag photo.photo_picture.photowall.url, :data => {:id => photo.id}, :id => "full_#{photo.id}",:class => "full" %>
 
           <div class="votes">
             <b>Number of Likes:</b>

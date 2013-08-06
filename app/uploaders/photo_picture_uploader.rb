@@ -50,6 +50,10 @@ class PhotoPictureUploader < CarrierWave::Uploader::Base
   version :detail do
     process :resize_to_fill => [400, 400]
   end
+  version :photowall do
+    process :resize_to_limit => [960, 960]
+  end
+
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
