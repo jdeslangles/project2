@@ -21,7 +21,7 @@ $(function() {
     var $portfolio = $('#portfolio');
     $portfolio.imagesLoaded( function() {
         $portfolio.masonry({
-          columnWidth: 180,
+          columnWidth: 188,
           itemSelector: '.item',
           gutterWidth: 20
         });
@@ -39,18 +39,18 @@ $(function() {
             var current_thumb = $(current_item).find('img.thumb'),
                   current_item = $(current_item);
             current_thumb.removeAttr('height');
-            current_thumb.attr('width', '150px');
+            current_thumb.attr('width', '170px');
             current_item.height('');
-            current_item.width('150px');
+            current_item.width('170px');
             current_item.attr('data-scaled', 'false');
                         current_item.removeClass('unfold');
           });
           //$portfolio.masonry();
           if (item.attr('data-scaled') == "true") {
             // thumb.attr('height', thumb.attr('data-orig-height'));
-            thumb.attr('width', '150px');
+            thumb.attr('width', '170px');
             // item.height(thumb.attr('data-orig-height'));
-            item.width('150px');
+            item.width('170px');
             item.attr('data-scaled', 'false');
                         item.removeClass('unfold');
           } else {

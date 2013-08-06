@@ -38,6 +38,7 @@ class PhotoPictureUploader < CarrierWave::Uploader::Base
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
+      process :resize_to_fit => [940, 940]
   #
   # def scale(width, height)
   #   # do something
@@ -50,11 +51,27 @@ class PhotoPictureUploader < CarrierWave::Uploader::Base
   version :detail do
     process :resize_to_fill => [400, 400]
   end
-  version :photowall do
-    process :resize => [960, 960]
-  end
+  # version :photowall do
+  #   process :resize_to_fit => [960, 960]
+  # end
 
 protected
+
+    def resize_to_fit(width, height)
+      manipulate! do |img|
+        img.resize "#{width}x#{height}"
+        img = yield(img) if block_given?
+        img
+      end
+    end
+
+    def resize_to_limit(width, height)
+      manipulate! do |img|
+        img.resize "#{width}x#{height}>"
+        img = yield(img) if block_given?
+        img
+      end
+    end
 
     def resize(width, height, gravity = 'Center')
       manipulate! do |img|

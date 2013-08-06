@@ -8,10 +8,10 @@
   <% @photos.each do |photo| %>
     <div class="item">
 
-      <%= image_tag photo.photo_picture.photowall.url, :data => {:id => photo.id, :'full-width' => photo.photo_picture.image_width, :'full-height' => photo.photo_picture.image_height }, :id => "thumb_#{photo.id}", :class =>"thumb", :width => 150 %>
+      <%= image_tag photo.photo_picture, :data => {:id => photo.id, :'full-width' => photo.photo_picture.image_width, :'full-height' => photo.photo_picture.image_height }, :id => "thumb_#{photo.id}", :class =>"thumb", :width => 170 %>
 
       <div class="info">
-        <%= image_tag photo.photo_picture.photowall.url, :data => {:id => photo.id}, :id => "full_#{photo.id}",:class => "full" %>
+        <%= image_tag photo.photo_picture, :data => {:id => photo.id}, :id => "full_#{photo.id}",:class => "full" %>
 
           <div class="votes">
             <b>Number of Likes:</b>
@@ -28,7 +28,7 @@
               <%end%>
             </div> -->
             <div>
-            <p>Check out more of 's work on their <%= link_to("page", user_path(photo.album.user)) %></p>
+            <p>Check out more of <%=photo.album.user.username %>'s work on their <%= link_to("page", user_path(photo.album.user)) %></p>
             </div>
 
         </div>

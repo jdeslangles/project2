@@ -37,12 +37,8 @@ text-align: center;
 .item {
   display: block;
   float: left;
-  width: 150px;
+  width: 170px;
   margin: 5px;
-}
-
-.item {
-  width: 150px;
 }
 
 /*.item img {
