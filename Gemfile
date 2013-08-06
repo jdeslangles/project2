@@ -13,9 +13,10 @@ gem 'devise'
 gem 'omniauth-google-oauth2'
 gem 'masonry-rails'
 gem 'acts_as_votable', '~> 0.5.0'
+gem 'figaro'
 
 group :development do
-  gem 'rspec-rails'
+  # gem 'rspec-rails'
   gem 'pry-rails'
   gem 'pry-debugger'
   gem 'pry-stack_explorer'
@@ -24,13 +25,20 @@ group :development do
   gem 'meta_request'
 end
 
-group :test do
-  gem "rspec-rails"
-  gem "database_cleaner"
-  gem "shoulda"
-  gem "capybara"
-end
+# group :test do
+#   gem "rspec-rails"
+#   gem "database_cleaner"
+#   gem "shoulda"
+#   gem "capybara"
+# end
 
+gem "rspec-rails", ">= 2.12.2", :group => [:development, :test]
+gem "database_cleaner", ">= 0.9.1", :group => :test
+gem "email_spec", ">= 1.4.0", :group => :test
+gem "cucumber-rails", ">= 1.3.0", :group => :test, :require => false
+gem "launchy", ">= 2.1.2", :group => :test
+gem "capybara", ">= 2.0.2", :group => :test
+gem "factory_girl_rails", ">= 4.2.0", :group => [:development, :test]
 
 # Gems used only for assets and not required
 # in production environments by default.
