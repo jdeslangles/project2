@@ -3,11 +3,11 @@
 
 <table class="table">
   <tr>
+    <th></th>
     <th>First name</th>
     <th>Last name</th>
     <th>Email</th>
     <th>Username</th>
-    <th>Avatar</th>
     <th>Biography</th>
     <th>Location</th>
     <th>Role</th>
@@ -18,11 +18,11 @@
 
 <% @users.each do |user| %>
   <tr>
+    <td><%= image_tag user.avatar.url %></td>
     <td><%= user.first_name %></td>
     <td><%= user.last_name %></td>
     <td><%= user.email %></td>
     <td><%= user.username %></td>
-    <td><%= image_tag user.avatar.url %></td>
     <td><%= user.biography %></td>
     <td><%= user.location %></td>
     <td><%= user.role %></td>
