@@ -2,6 +2,10 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
+  before_save do 
+    self.username.downcase! if self.username
+  end
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 	
@@ -13,8 +17,8 @@ class User < ActiveRecord::Base
 
 	validates :first_name, presence: true, length:{minimum:2}
 	validates :last_name, presence: true, length:{minimum:2}
-	validates :username, presence: true, uniqueness: { case_sensitive: false }
-	validates :email, presence: true, uniqueness: { case_sensitive: false }, on: :create
+	validates :username, presence: true, uniqueness: true
+	# validates :email, presence: true, uniqueness: true => on: :create
 	validates :biography, length: {maximum: 250,
 		too_long: "%{count} characters is the maximum allowed." }
 
@@ -25,7 +29,12 @@ class User < ActiveRecord::Base
 	accepts_nested_attributes_for :albums
 
 	def role?(role)
-			self.role == role
+		self.role == role
 	end
+
+  def self.find_for_authentication(conditions)
+    conditions[:username].downcase!
+    super(conditions)
+  end
 
 end
