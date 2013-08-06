@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
 
   private
   def set_default_role
-    role ||= 'registered'
+    self.role ||= 'registered'
   end
 
 end
