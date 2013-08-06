@@ -2,9 +2,9 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  before_save do 
-    self.username.downcase! if self.username
-  end
+  before_validation :downcase_username
+  before_validation :set_default_role
+
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -28,13 +28,23 @@ class User < ActiveRecord::Base
 
 	accepts_nested_attributes_for :albums
 
+  def self.find_for_authentication(conditions)
+    conditions[:username].downcase!
+    super(conditions)
+  end
+
 	def role?(role)
 		self.role == role
 	end
 
-  def self.find_for_authentication(conditions)
-    conditions[:username].downcase!
-    super(conditions)
+  private
+  def downcase_username
+    self.username.downcase! if self.username
+  end
+
+  private
+  def set_default_role
+    role ||= 'registered'
   end
 
 end

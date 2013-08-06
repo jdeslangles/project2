@@ -45,11 +45,10 @@
     <% end %>
   </p>
   <div class="links">
-
-    <%= link_to 'Create Album', new_user_album_path(@user), class:"btn btn-success btn-mini" %>
-
+    <% if can? :update, @user %>
+      <%= link_to 'Create Album', new_user_album_path(@user), class:"btn btn-success btn-mini" %>
       <%= link_to 'Edit', edit_user_registration_path(@user), class:"btn btn-warning btn-mini" %>
-
+    <%end%>
     <%= link_to 'Back', users_path, class:"btn btn-inverse btn-mini" %>
 
 
