@@ -3,51 +3,52 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-
+  <div><%= f.label :email %>
+    <%= f.email_field :email, :autofocus => true %>
+  </div>
 
   <div>
-    <%= f.label :first_name %><br />
+    <%= f.label :first_name, 'First Name' %>
     <%= f.text_field :first_name %>
   </div>
 
-
   <div>
-    <%= f.label :last_name %><br />
+    <%= f.label :last_name, 'Last Name' %>
     <%= f.text_field :last_name %>
   </div>
+
   <div>
-    <%= f.label :username %><br />
+    <%= f.label :username %>
     <%= f.text_field :username %>
   </div>
+
   <div>
-    <%= f.file_field :avatar %><br />
-     <%= f.label :avatar %>
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %>
   </div>
+
   <div>
-    <%= f.label :biography %><br />
-    <%= f.text_area :biography %>
+    <%= f.label :biography %>
+    <%= f.text_area :biography, size: '100x3' %>
   </div>
+
   <div>
-    <%= f.label :location %><br />
+    <%= f.label :location %>
     <%= f.text_field :location %>
   </div>
+
   <div>
-    <%= f.label :role %><br />
-    <%= f.text_field :role %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
   </div>
 
-
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <div>
+    <%= f.label :password_confirmation, 'Password Confirmation' %>
+    <%= f.password_field :password_confirmation %>
+  </div>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>
-
-<%= render "devise/shared/links" %>
+<div>
+  <%= render "devise/shared/links" %>
+</div>

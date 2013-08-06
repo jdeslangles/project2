@@ -23,7 +23,7 @@
   </div>
   <div>
     <%= f.label :biography %>
-    <%= f.text_area :biography %>
+    <%= f.text_area :biography, size: '100x3' %>
   </div>
   <div>
     <%= f.label :location %>
@@ -45,8 +45,8 @@
   <div><%= f.submit "Update" %></div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h4>Delete My Account</h4>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
+<p>We're sorry to see you go. <%= button_to "Delete My Account", registration_path(resource_name), :data => { :confirm => "Are you sure? Once your account is deleted, you cannot recover it." }, :method => :delete %></p>
 
 <%= link_to "Back", :back %>
