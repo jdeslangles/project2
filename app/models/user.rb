@@ -1,18 +1,24 @@
 class User < ActiveRecord::Base
-	acts_as_voter
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable
+  before_validation :downcase_username
+  before_validation :set_default_role
 
-	attr_accessible :avatar, :biography, :email, :first_name, :last_name, :location, :role, :username, :password,:password_confirmation
 
-	has_secure_password
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+	
+  acts_as_voter
+
+	attr_accessible :avatar, :biography, :email, :first_name, :last_name, :location, :role, :username, :password,:password_confirmation, :remember_me
 
 	mount_uploader :avatar, AvatarUploader
 
 	validates :first_name, presence: true, length:{minimum:2}
 	validates :last_name, presence: true, length:{minimum:2}
-	validates :username, presence: true, uniqueness: { case_sensitive: false }
-	validates :email, presence: true, uniqueness: { case_sensitive: false }, on: :create
-	validates :password, presence: true, length:{in:(6..20), message: "Your password should be 6 to 20 characters long."}
-	validates :password_confirmation, presence: true
+	validates :username, presence: true, uniqueness: true
+	# validates :email, presence: true, uniqueness: true => on: :create
 	validates :biography, length: {maximum: 250,
 		too_long: "%{count} characters is the maximum allowed." }
 
@@ -22,8 +28,23 @@ class User < ActiveRecord::Base
 
 	accepts_nested_attributes_for :albums
 
+  def self.find_for_authentication(conditions)
+    conditions[:username].downcase!
+    super(conditions)
+  end
+
 	def role?(role)
-			self.role == role
+		self.role == role
 	end
+
+  private
+  def downcase_username
+    self.username.downcase! if self.username
+  end
+
+  private
+  def set_default_role
+    self.role ||= 'registered'
+  end
 
 end

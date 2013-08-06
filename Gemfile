@@ -7,8 +7,9 @@ gem 'rails', '3.2.14'
 
 gem 'pg'
 gem 'cancan'
-gem 'rmagick'
+gem 'mini_magick'
 gem 'carrierwave'
+gem 'devise'
 gem 'masonry-rails'
 gem 'acts_as_votable', '~> 0.5.0'
 
