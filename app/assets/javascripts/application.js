@@ -23,7 +23,7 @@ $(function() {
     $portfolio.imagesLoaded( function() {
 
         $portfolio.masonry({
-          columnWidth: 170,
+          columnWidth: 180,
           itemSelector: '.item',
           gutterWidth: 20
         });
