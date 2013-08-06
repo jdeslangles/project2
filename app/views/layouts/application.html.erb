@@ -39,6 +39,7 @@
               <% if current_user %>
                 <li class="nav-user">Logged in as <%= current_user.username %></li>
               <% end %>
+              <li><%= link_to 'Search', search_path %></li>
               <li><% if current_user %><%= link_to 'Logout', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } %>
                 <% else %>
                   <%= link_to 'Login', login_path %>

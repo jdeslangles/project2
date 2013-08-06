@@ -1,0 +1,23 @@
+<%= search_form_for @q, url: search_path, html: {method: :post} do |f| %>
+
+  <p>
+    <%= f.label :name_cont, 'Search for a Photo!' %>
+    <%= f.text_field :name_cont %>
+  </p>
+ <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<% if flash %>
+  <p><%= flash[:error] %></p>
+<% end %>
+
+
+  <ul>
+    <% @photos.each do |photo| %>
+      <li>
+      <%= link_to( image_tag(photo.photo_picture.url), user_album_photo_path(photo.album.user, photo.album, photo)) %>
+      </li>
+    <% end %>
+</ul>
