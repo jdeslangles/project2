@@ -20,7 +20,6 @@
 
 $(function() {
     var $portfolio = $('#portfolio');
-    var cssinitial;
     $portfolio.imagesLoaded( function() {
         $portfolio.masonry({
           columnWidth: 170,
@@ -28,35 +27,34 @@ $(function() {
           gutterWidth: 20
         });
 
+        var width = $portfolio.find('.item:first').width();
+        var height = $portfolio.find('.item:first').height();
+        var cssinitial =  {width:width, height:height};
 
-
-        $('body #portfolio img.thumb').on('click', function(event) {
-          initialWidth = $portfolio.find('.item:first').width();
-          initialHeight = $portfolio.find('.item:first').height();
-          cssinitial =  {width:initialWidth, height:initialHeight};
-        // $portfolio.find('img.thumb').on('click', function(event) {
+        // $('body #portfolio img.thumb').on('click', function(event) {
+        $portfolio.find('img.thumb').on('click', function(event) {
 
           // Close all unfolded element
           $portfolio.find('.unfold').removeClass('unfold').css(cssinitial);
 
           // Unfold this
-          unfold = $(this).closest('.item').addClass('unfold');
+          $(this).closest('.item').addClass('unfold');
+
           // Reload masonry
           $portfolio.masonry();
 
           // Animate unfolding
+          var unfold = $(this).parent().addClass('unfold');
           var widthfinal = unfold.width();
           var heightfinal = unfold.height();
-          unfold.animate({
+          unfold.css(cssinitial).animate({
             width:widthfinal,
             height:heightfinal
           });
         });
 
-
-
-        $('body #portfolio img.full').on('click', function(event) {
-        // $portfolio.find('img.full').on('click', function(event) {
+   // $('body #portfolio img.thumb').on('click', function(event) {
+        $portfolio.find('img.full').on('click', function(event) {
           $(this).closest('.item').removeClass('unfold').css(cssinitial);
           $portfolio.masonry();
         });

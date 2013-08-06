@@ -34,11 +34,12 @@ text-align: center;
 
 
 
-/*.item {
+.item {
+  display: block;
   float: left;
   width: 150px;
   margin: 5px;
-}*/
+}
 
 .item {
   width: 150px;
@@ -49,7 +50,7 @@ text-align: center;
 }
 
 .item.unfold {
-  width: 640px;
+  width: 630px;
 }
 .item.unfold .info{
   display: block;
