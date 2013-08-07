@@ -34,6 +34,12 @@ text-align: center;
 .row{
   padding-bottom: 30px;
 }
+
+/*users index styling*/
+.table th {
+  width: 60px;
+}
+
 /*footer styling*/
 .footer{
   height: 30px;

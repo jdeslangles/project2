@@ -4,14 +4,11 @@
     <br>
     <table class="table">
       <tr>
-        <th></th>
+        <th> </th>
         <th>First Name</th>
         <th>Last Name</th>
-        <th>Email</th>
         <th>Username</th>
-        <th>Biography</th>
         <th>Location</th>
-        <th>Role</th>
         <th></th>
         <th></th>
         <th></th>
@@ -22,11 +19,8 @@
         <td><%= image_tag user.avatar.url %></td>
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
-        <td><%= user.email %></td>
         <td><%= user.username %></td>
-        <td><%= user.biography %></td>
         <td><%= user.location %></td>
-        <td><%= user.role %></td>
         <td><%= link_to 'View', user, class:"btn btn-info btn-mini" %></td>
 
         <%if can? :update, user and current_user.role == 'registered' || 'admin' %>
