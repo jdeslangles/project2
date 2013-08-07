@@ -1,23 +1,42 @@
 <div>
 <h1>Wall of Fame</h1>
-  <div id="container">
-  <% if @photos %>  
+<br>
+<br>
+  <div id="portfolio">
+  <% if @photos %>
   <% @photos.each do |photo| %>
     <div class="item">
-      <%= image_tag photo.photo_picture %>
-      <b>Number of Likes:</b>
-      <%= photo.likes.size %>
-        <div class="voting">
-          <% if current_user %>
-            <% if current_user.voted_up_on? photo %>
-              <%= button_to 'Unlike', unlike_wall_user_album_photo_path(photo.album.user, photo.album, photo) %>
-            <% else %>
-              <%= button_to 'Like', like_wall_user_album_photo_path(photo.album.user, photo.album, photo) %>
-            <% end %>
-          <%end%>
+
+      <%= image_tag photo.photo_picture, :data => {:id => photo.id, :'full-width' => photo.photo_picture.image_width, :'full-height' => photo.photo_picture.image_height }, :id => "thumb_#{photo.id}", :class =>"thumb", :width => 170 %>
+
+      <div class="info">
+        <%= image_tag photo.photo_picture, :data => {:id => photo.id}, :id => "full_#{photo.id}",:class => "full" %>
+
+          <div class="votes">
+            <b>Number of Likes:</b>
+            <%= photo.likes.size %>
+          </div>
+
+<!--           <div class="voting">
+            <% if current_user %>
+              <% if current_user.voted_up_on? photo %>
+                <%= button_to 'Unlike', unlike_wall_user_album_photo_path(photo.album.user, photo.album, photo) %>
+                <% else %>
+                  <%= button_to 'Like', like_wall_user_album_photo_path(photo.album.user, photo.album, photo) %>
+                <% end %>
+              <%end%>
+            </div> -->
+            <div>
+            <p>Liking this? Leave a <%=link_to("comment", user_album_photo_path(photo.album.user, photo.album, photo)) %>, have a look at the <%=link_to("album", user_album_path(photo.album.user, photo.album)) %>, or check out more of <%=photo.album.user.username %>'s work <%= link_to("here", user_path(photo.album.user))%>!</p>
+            </div>
         </div>
+
     </div>
   <% end %>
   </div>
 <%end%>
+<br>
+<br>
 </div>
+<br>
+<br>

@@ -1,45 +1,48 @@
 <div class="span8">
-<h1>Users Index</h1>
+    <h1>Users Index</h1>
+    <br>
+    <br>
+    <table class="table">
+      <tr>
+        <th></th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Biography</th>
+        <th>Location</th>
+        <th>Role</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
 
-<table class="table">
-  <tr>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Email</th>
-    <th>Username</th>
-    <th>Avatar</th>
-    <th>Biography</th>
-    <th>Location</th>
-    <th>Role</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= image_tag user.avatar.url %></td>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.username %></td>
+        <td><%= user.biography %></td>
+        <td><%= user.location %></td>
+        <td><%= user.role %></td>
+        <td><%= link_to 'View', user, class:"btn btn-info btn-mini" %></td>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.first_name %></td>
-    <td><%= user.last_name %></td>
-    <td><%= user.email %></td>
-    <td><%= user.username %></td>
-    <td><%= image_tag user.avatar.url %></td>
-    <td><%= user.biography %></td>
-    <td><%= user.location %></td>
-    <td><%= user.role %></td>
-    <td><%= link_to 'View', user, class:"btn btn-info btn-mini" %></td>
+        <%if can? :update, user and current_user.role == 'registered' || 'admin' %>
+            <td><%= link_to 'Edit', edit_user_registration_path(user), class:"btn btn-warning btn-mini" %></td>
+            <td><%= link_to 'Destroy', user, class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
+      </tr>
+    <% end %>
+    </table>
 
-    <%if can? :update, user and current_user.role == 'registered' || 'admin' %>
-        <td><%= link_to 'Edit', edit_user_registration_path(user), class:"btn btn-warning btn-mini" %></td>
-        <td><%= link_to 'Destroy', user, class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <%end%>
-  </tr>
-<% end %>
-</table>
-
-<br />
+    <br />
     <div class="links">
         <%= link_to 'New User', new_user_registration_path, class:"btn btn-success btn-large" %>
     </div>
+<br>
+<br>
 </div>
 
 

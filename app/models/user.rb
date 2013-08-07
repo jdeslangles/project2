@@ -20,6 +20,9 @@ class User < ActiveRecord::Base
 	validates :biography, length: {maximum: 250,
 		too_long: "%{count} characters is the maximum allowed." }
 
+      validate :avatar_size_validation
+
+
 	has_many :comments
 	has_many :albums, dependent: :destroy
 	has_many :photos, through: :albums, dependent: :destroy
@@ -43,6 +46,12 @@ class User < ActiveRecord::Base
   private
   def set_default_role
     self.role ||= 'registered'
+  end
+
+
+  private
+  def avatar_size_validation
+    errors[:avatar] << "should be less than 1MB" if avatar.size > 1.megabyte
   end
 
   def self.from_omniauth(auth)

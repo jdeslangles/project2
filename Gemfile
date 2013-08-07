@@ -7,14 +7,14 @@ gem 'rails', '3.2.14'
 
 gem 'pg'
 gem 'cancan'
-gem 'rmagick'
+gem 'mini_magick'
 gem 'carrierwave'
 gem 'devise'
 gem 'omniauth-google-oauth2'
 gem 'masonry-rails'
 gem 'acts_as_votable', '~> 0.5.0'
 gem 'figaro'
-
+gem 'acts-as-taggable-on'
 
 group :development do
   # gem 'rspec-rails'
