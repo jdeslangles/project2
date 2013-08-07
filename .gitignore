@@ -36,3 +36,6 @@ rerun.txt
 pickle-email-*.html
 .project
 .DS_Store
+# Ignore application configuration
+/config/application.yml
+

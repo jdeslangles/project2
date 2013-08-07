@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   before_validation :downcase_username
   before_validation :set_default_role
 
-  devise :database_authenticatable, :registerable, :omniauthable, :recoverable, :rememberable, :trackable, :validatable, omniauth_providers: [:google_oauth2]
-
+  devise :database_authenticatable, :registerable, :omniauthable, :recoverable, :rememberable, :trackable, :validatable, :confirmable, omniauth_providers: [:google_oauth2]
+	
   acts_as_voter
 
 	attr_accessible :avatar, :biography, :email, :first_name, :last_name, :location, :role, :username, :password,:password_confirmation, :provider, :uid, :remember_me
@@ -71,5 +71,7 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+
 
 end
