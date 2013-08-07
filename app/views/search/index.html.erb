@@ -6,14 +6,26 @@
     <%= submit_tag 'Search!' , name: nil %>
 <% end %>
 
-<% if flash %>
-  <p><%= flash[:error] %></p>
-<% end %>
+<ul>
+  <% @photos.each do |photo| %>
+    <li>
+      <%= link_to( image_tag(photo.photo_picture.url), user_album_photo_path(photo.album.user, photo.album, photo)) %>
+    </li>
+  <% end %>
+</ul>
 
 <ul>
-    <% @photos.each do |photo| %>
-      <li>
-      <%= link_to( image_tag(photo.photo_picture.url), user_album_photo_path(photo.album.user, photo.album, photo)) %>
-      </li>
-    <% end %>
+  <% @albums.each do |album| %>
+    <li>
+      <%= link_to album.name, user_album_path(album, album.user) %>
+    </li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= link_to user.first_name, user_path(user) %>
+    </li>
+  <% end %>
 </ul>
