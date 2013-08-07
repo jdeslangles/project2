@@ -33,14 +33,21 @@
               <% if current_user %>
                 <li><%= link_to('My Profile', my_profile_path) %></li>
               <% end %>
-              <li><%= link_to 'Search', search_path %></li>
+
+              <li>
+              <%= form_tag search_path, class:"navbar-search pull-left", html: {method: :post} do |f| %>
+                  <%= text_field_tag :q, params[:q], class:"search-query" %>
+                  <%= submit_tag 'Search!' , name: nil,  class:"btn btn-inverse btn-small" %>
+              <% end %>
+              </li>
+
               <% unless current_user %>
                 <li class="nav-signup"><%= link_to('Sign up', new_user_registration_path)  %></li>
               <% end %>
               <% if current_user %>
                 <li class="nav-user">Logged in as <%= current_user.username %></li>
               <% end %>
-              <li ><% if current_user %><%= link_to 'Logout', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <li><% if current_user %><%= link_to 'Logout', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } %>
                 <% else %>
                   <%= link_to 'Login', login_path %>
                 <% end %>
