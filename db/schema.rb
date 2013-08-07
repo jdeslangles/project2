@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20130806140014) do
   add_index "photos", ["cached_votes_total"], :name => "index_photos_on_cached_votes_total"
   add_index "photos", ["cached_votes_up"], :name => "index_photos_on_cached_votes_up"
 
+
   create_table "users", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
