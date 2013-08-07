@@ -17,6 +17,8 @@ gem 'figaro'
 gem 'acts-as-taggable-on'
 gem 'kaminari'
 gem 'mini_magick'
+gem "fog"
+
 
 group :development do
   # gem 'rspec-rails'
