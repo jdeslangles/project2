@@ -41,6 +41,13 @@
                 </li>
               <% end %>
 
+              <li>
+              <%= form_tag search_path, class:"navbar-search pull-left", html: {method: :post} do |f| %>
+                  <%= text_field_tag :q, params[:q], class:"search-query" %>
+                  <%= submit_tag 'Search!' , name: nil,  class:"btn btn-inverse btn-small" %>
+              <% end %>
+              </li>
+
               <% unless current_user %>
                 <li class="nav-signup"><%= link_to('Sign up', new_user_registration_path)  %>
                 </li>
@@ -63,14 +70,7 @@
       </div>
     </div>
 
-  <% flash.each do |name,message| %>
-    <div class="flash-message flash-message-<%=name%>">
-      <%= message %>
-    </div>
-  <%end%>
-
-
-<%= yield %>
+    <%= yield %>
 
   </div>
 </body>

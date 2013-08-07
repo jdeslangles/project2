@@ -47,7 +47,7 @@ class PhotosController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @album = Album.find(params[:album_id])
-    @photos = Photo.all
+    
 
     respond_to do |format|
       format.html # index.html.erb

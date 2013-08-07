@@ -65,6 +65,7 @@ Project2::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
+
   config.action_mailer.default_url_options={:host=>'example.com'} 
   #ActionMailerConfig 
   #Setupforproduction-deliveries,noerrorsraised 
@@ -79,4 +80,18 @@ Project2::Application.configure do
     user_name: "hendre@hotmail.it",
     passwrod: "UEmgLLi4BMHIlLvm4qwpXg"
   }
+
+  CarrierWave.configure do |config|
+    config.storage = :fog
+    config.fog_credentials = {
+      :provider               => 'AWS',
+      :aws_access_key_id      => ENV['AWS_ACCESS_KEY_ID'],
+      :aws_secret_access_key  => ENV['AWS_SECRET_ACCESS_KEY']
+    }
+    config.fog_directory  = 'jcfdb-photo-sharing-app'
+  end
+
+  config.assets.initialize_on_precompile = false
+
+
 end

@@ -28,7 +28,7 @@
 
   <p>
     <b>Photos:</b>
-    <% @album.photos.each do |photo|%>
+    <% @photos.each do |photo|%>
     <%= link_to( image_tag(photo.photo_picture.url), user_album_photo_path(photo.album.user, photo.album, photo)) %>
     <% end %>
   </p>
@@ -44,4 +44,6 @@
   </div>
 <br>
 <br>
+<%= paginate @photos %>
+
 </div>
