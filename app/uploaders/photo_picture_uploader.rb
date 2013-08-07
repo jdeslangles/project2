@@ -49,7 +49,7 @@ class PhotoPictureUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [100, 100]
   end
   version :detail do
-    process :resize_to_fill => [400, 400]
+    process :resize_to_fit => [500, 500]
   end
   # version :photowall do
   #   process :resize_to_fit => [960, 960]

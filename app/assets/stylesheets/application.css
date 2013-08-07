@@ -23,8 +23,8 @@
 .item {
   display: block;
   float: left;
-  width: 170px;
-  margin: 5px;
+  width: 160px;
+  margin: 0 0 5px 0;
 }
 
 /*.item img {
@@ -52,6 +52,31 @@
 }*/
 .item.unfold .info{
   display: block;
+}
+
+.photo_on_wall {
+  background-color: white;
+  border-top: #FAF7CF solid 1px;
+  border-right: #FAF7CF solid 1px;
+  border-bottom: #FAF7CF solid 1px;
+  border-left: #FAF7CF solid 1px;
+  padding: 10px;
+/*  margin: 10px;*/
+  text-align: center;
+
+  /* Gradients for modern browsers, replace as you see fit */
+  background-image: -moz-linear-gradient(top, #FCFCF7, #FAF7CF);
+  background-image: -ms-linear-gradient(top, #FCFCF7, #FAF7CF);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FCFCF7), to(#FAF7CF));
+  background-image: -webkit-linear-gradient(top, #FCFCF7, #FAF7CF);
+  background-image: -o-linear-gradient(top, #FCFCF7, #FAF7CF);
+  background-image: linear-gradient(top, #FCFCF7, #FAF7CF);
+  background-repeat: repeat-x;
+
+  /* IE8-9 gradient filter */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCFCF7', endColorstr='#FAF7CF', GradientType=0);
+
+    box-shadow: 2px 2px 5px 1px #BABAB6;
 }
 
 /*.item.unfold .full {
