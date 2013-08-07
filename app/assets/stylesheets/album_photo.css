@@ -36,3 +36,10 @@ transform:rotate(-2deg);
 -ms-transform:rotate(-2deg); /* IE 9 */
 -webkit-transform:rotate(-2deg); /* Safari and Chrome */
 }
+
+.tilted3
+{
+transform:rotate(5deg);
+-ms-transform:rotate(5deg); /* IE 9 */
+-webkit-transform:rotate(5deg); /* Safari and Chrome */
+}

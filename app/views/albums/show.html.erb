@@ -36,7 +36,7 @@
       <div class="row">
         <% @photos.each do |photo|%>
           <div class="span3">
-            <% cycle("1","2", "3", "4") %>
+            <% cycle("1","2","3","4","5") %>
               <div class="photo">
                 <%= link_to( image_tag(photo.photo_picture.url), user_album_photo_path(photo.album.user, photo.album, photo)) %>
               </div>
@@ -49,6 +49,11 @@
             <% if current_cycle == '4' %>
                 <script>
                 $( "div" ).last().addClass( "tilted2" );
+                </script>
+            <% end %>
+            <% if current_cycle == '5' %>
+                <script>
+                $( "div" ).last().addClass( "tilted3" );
                 </script>
             <% end %>
           <% end %>
