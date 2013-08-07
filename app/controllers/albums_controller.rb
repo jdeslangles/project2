@@ -3,7 +3,8 @@ class AlbumsController < ApplicationController
  # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all
+    @albums = Album.order(:created_at).page(params[:page])
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +16,7 @@ class AlbumsController < ApplicationController
   # GET /albums/1.json
   def show
     @album = Album.find(params[:id])
+    @photos = Photo.where(album_id: @album.id).page(params[:page])
 
     respond_to do |format|
       format.html # show.html.erb

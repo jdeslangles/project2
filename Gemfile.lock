@@ -116,6 +116,9 @@ GEM
     json (1.8.0)
     jwt (0.1.8)
       multi_json (>= 1.5)
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     launchy (2.3.0)
       addressable (~> 2.3)
     letter_opener (1.1.2)
@@ -254,6 +257,7 @@ DEPENDENCIES
   factory_girl_rails (>= 4.2.0)
   figaro
   jquery-rails
+  kaminari
   launchy (>= 2.1.2)
   letter_opener
   masonry-rails
