@@ -1,14 +1,10 @@
 class SearchController < ApplicationController
   def index
     if params[:q]
-      @photos = Photo.where('name like :name', name: "%#{params[:q]}%")
-      @album = Album.where('name like :name', name: "%#{params[:q]}%")
-      @users = User.where('username like :username', username: "%#{params[:q]}%")
-      # if params[:q].empty?
-      #   flash[:error] = "No matches for #{params[:q]}."
-      # else
-      #   flash[:error] = nil
-      # end
+      search = params[:q].to_s.downcase
+      @photos = Photo.where('LOWER(name) like :search OR LOWER(description) like :search', search: "%#{search}%")
+      @albums = Album.where('LOWER(name) like :search OR LOWER(description) like :search', search: "%#{search}%")
+      @users = User.where('LOWER(username) like :search OR LOWER(first_name) like :search OR LOWER(last_name) like :search OR LOWER(biography) like :search OR LOWER(location) like :search', search: "%#{search}%")
     else
       @photos=[]
       @albums = []

@@ -1,12 +1,17 @@
+<h2>Search Results</h2>
 
-<ul>
+<% if (@photos + @albums + @users).empty? %>
+  Sorry, nothing matched your search term.
+<% end %>
+
+<ul class="unstyled">
   <% @photos.each do |photo| %>
     <li>
       <%= link_to( image_tag(photo.photo_picture.url), user_album_photo_path(photo.album.user, photo.album, photo)) %>
     </li>
   <% end if @photos %>
 </ul>
-<ul>
+<ul >
   <% @albums.each do |album| %>
     <li>
       <%= link_to album.name, user_album_path(album, album.user) %>
