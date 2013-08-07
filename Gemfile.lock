@@ -228,8 +228,8 @@ DEPENDENCIES
   jquery-rails
   masonry-rails
   meta_request
-  omniauth-google-oauth2
   mini_magick
+  omniauth-google-oauth2
   pg
   pry-debugger
   pry-rails
