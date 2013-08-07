@@ -1,8 +1,8 @@
 <%= search_form_for @q, url: search_path, html: {method: :post} do |f| %>
 
   <p>
-    <%= f.label :name_or_description_cont, 'Search for a Photo!' %>
-    <%= f.text_field :name_or_description_cont %>
+    <%= f.label :name_or_description_or_photo_album_name_cont, 'Search for a Photo!' %>
+    <%= f.text_field :name_or_description_or_photo_album_name_cont %>
   </p>
  <p>
     <%= f.submit %>

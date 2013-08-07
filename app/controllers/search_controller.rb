@@ -1,15 +1,15 @@
 class SearchController < ApplicationController
   def index
-    @q = Photo.search(params[:q])
+    @q = [(Photo.search(params[:q])), (Album.search(params[:q]))]
     if params[:q]
-      @photos = @q.result(distinct: :true)
+      [@photos, @albums] = @q.result(distinct: :true)
       if @q.result.empty?
-        flash[:error] = "No matches for #{params[:q][:name_or_description_cont]}."
+        flash[:error] = "No matches for #{params[:q][:name_or_description_or_photo_album_name_cont]}."
       else
         flash[:error] = nil
       end
     else
-      @photos=[]
+      [@photos, @albums]=[]
     end
   end
 
