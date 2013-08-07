@@ -15,6 +15,7 @@ gem 'masonry-rails'
 gem 'acts_as_votable', '~> 0.5.0'
 gem 'figaro'
 
+
 group :development do
   # gem 'rspec-rails'
   gem 'pry-rails'
@@ -23,6 +24,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'better_errors'
   gem 'meta_request'
+  gem "letter_opener"
 end
 
 # group :test do

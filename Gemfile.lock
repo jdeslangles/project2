@@ -116,6 +116,8 @@ GEM
       multi_json (>= 1.5)
     launchy (2.3.0)
       addressable (~> 2.3)
+    letter_opener (1.1.2)
+      launchy (~> 2.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -248,6 +250,7 @@ DEPENDENCIES
   figaro
   jquery-rails
   launchy (>= 2.1.2)
+  letter_opener
   masonry-rails
   meta_request
   omniauth-google-oauth2
