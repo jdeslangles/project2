@@ -1,7 +1,9 @@
 class Photo < ActiveRecord::Base
   acts_as_votable
+  acts_as_taggable
+  # acts_as_taggable_on :photo_tags
 
-  attr_accessible :description, :name, :photo_picture, :album_id
+  attr_accessible :description, :name, :photo_picture, :album_id, :tag_list
 
   mount_uploader :photo_picture, PhotoPictureUploader
 

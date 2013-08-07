@@ -34,6 +34,11 @@
       <%= @photo.likes.size %>
   </p>
 
+  <p>
+    <b>Tags:</b>
+    <%= @photo.tag_list %>
+  </p>
+
   <div class="voting">
     <% if can? [:like, :unlike], @photo %>
       <% if current_user.voted_up_on? @photo %>

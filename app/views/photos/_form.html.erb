@@ -33,6 +33,11 @@
      <%= f.label :photo_picture%><br />
   </div>
 
+  <div class="field">
+    <%= f.label :tag_list %> <i>Please separate tags with a comma.</i><br />
+    <%= f.text_field :tag_list %>
+  </div>
+
   <div class="links">
     <%= f.submit 'Submit', class: "btn btn-success btn-mini" %>
     <%= link_to 'Back to Album', user_album_path(@album.user, @album), class:"btn btn-inverse btn-mini" %>
