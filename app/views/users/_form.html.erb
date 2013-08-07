@@ -10,7 +10,11 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="links">
+    <%= link_to 'View', @user, class:"btn btn-info btn-mini" %>
+    <%= link_to 'Back to Users', users_path, class:"btn btn-inverse btn-mini" %>
+  </div>
+  <br>
   <div class="field">
     <%= f.label :first_name %>
     <%= f.text_field :first_name, :autofocus => true %><br />
@@ -28,7 +32,7 @@
     <%= f.text_field :username %><br />
   </div>
   <div class="field">
-    <%= f.file_field :avatar %>
+    <%= f.file_field :avatar, :onchange =>"validateFiles(this);", :data => { :max_file_size => 1.megabyte }%>
      <%= f.label :avatar %><br/>
   </div>
   <div class="field">

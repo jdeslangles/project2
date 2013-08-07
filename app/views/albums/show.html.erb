@@ -1,5 +1,16 @@
 <div class="span8">
-
+<h1>Album</h1>
+<br>
+<br>
+  <div class="links">
+   <% if can? :manage, @album.user %>
+      <%= link_to 'Add Photo', new_user_album_photo_path(@album.user, @album), class:"btn btn-success btn-mini"%>
+      <%= link_to 'Edit Album', edit_user_album_path(@album.user, @album), class:"btn btn-warning btn-mini" %>
+      <%= link_to 'Destroy', user_album_path(@album.user, @album), class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+    <%= link_to 'Back to User Profile', user_path(@album.user), class:"btn btn-inverse btn-mini" %>
+  </div>
+  <br>
   <p>
     <b>Name:</b>
     <%= @album.name %>
@@ -15,10 +26,9 @@
     <%= @album.privacy %>
   </p>
 
-
   <p>
     <b>Photos:</b>
-    <% @album.photos.each do |photo|%>
+    <% @photos.each do |photo|%>
     <%= link_to( image_tag(photo.photo_picture.url), user_album_photo_path(photo.album.user, photo.album, photo)) %>
     <% end %>
   </p>
@@ -32,4 +42,8 @@
 
     <%= link_to 'Back to User Profile', user_path(@album.user), class:"btn btn-inverse btn-mini" %>
   </div>
+<br>
+<br>
+<%= paginate @photos %>
+
 </div>

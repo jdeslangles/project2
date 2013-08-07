@@ -1,9 +1,9 @@
 Project2::Application.routes.draw do
 
-  devise_for :user
+  devise_for :user, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   devise_scope :user do
-    get 'login', to: 'devise/sessions#new'
+    get '/login', to: 'devise/sessions#new'
   end
 
   resources :users, except: [:new, :create, :update, :edit] do
@@ -26,6 +26,9 @@ Project2::Application.routes.draw do
   get '/my_profile', to: 'users#my_profile', as: :my_profile
   match 'search', to: 'search#index', via: [:get, :post], as: :search
 
+  resources :albums do
+    get 'page/:page', action: :index, on: :collection
+  end
 
   root to: 'photos#photo_wall'
 
