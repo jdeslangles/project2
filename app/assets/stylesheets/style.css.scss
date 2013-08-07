@@ -1,5 +1,6 @@
 /* VARIABLES */
 $text_grey: #A3A3A3;
+$denim_blue: #2d3442;
 
 body {
   font-family: 'Oxygen', sans-serif;
@@ -25,6 +26,26 @@ body {
 .navbar .nav {
   margin-top: 0.6em;
 }
+.navbar-inverse
+.navbar-inner{
+  background-image: none;
+  background-color: $denim_blue;
+ }
+.navbar-inverse .nav .active > a,
+.navbar-inverse .nav .active > a:hover,
+.navbar-inverse .nav .active > a:focus {
+    background-color: $denim_blue;
+    border: none;
+ }
+ .navbar-inverse .navbar-link:hover,
+.navbar-inverse .navbar-link:focus {
+  color: $denim_blue;
+}
+.navbar-inverse .navbar-search .search-query{
+  background-color: $text_grey;
+  border-color: $text_grey
+}
+
 /*.links {
 text-align: center;
 }*/
