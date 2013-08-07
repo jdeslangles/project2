@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
 	validates :first_name, presence: true, length:{minimum:2}
 	validates :last_name, presence: true, length:{minimum:2}
-	validates :username, presence: true, uniqueness: true
+	validates :username, presence: true, uniqueness: true, length:{maximum:15}
 	# validates :email, presence: true, uniqueness: true => on: :create
 	validates :biography, length: {maximum: 250,
 		too_long: "%{count} characters is the maximum allowed." }

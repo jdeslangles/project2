@@ -28,6 +28,7 @@
 
   <p>
     <b>Photos:</b>
+
     <% @photos.each do |photo|%>
     <%= link_to( image_tag(photo.photo_picture.url), user_album_photo_path(photo.album.user, photo.album, photo)) %>
     <% end %>

@@ -1,0 +1,7 @@
+<h2>Hey <%= @photo.album.user.username %>,</h2>
+
+<p>Your photo "<%= @photo.name %>" just received a comment from <%= @comment_user.username %>!<br><br>
+Check out the comment <%=link_to 'here', user_album_photo_path(@photo.album.user, @photo.album, @photo) %>!</p>
+
+<p>Have a great day!<br>
+The 4pix Team</p>
