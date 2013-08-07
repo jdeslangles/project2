@@ -28,11 +28,14 @@
 
   <p>
     <b>Photos:</b>
-
-    <% @photos.each do |photo|%>
-    <%= link_to( image_tag(photo.photo_picture.url), user_album_photo_path(photo.album.user, photo.album, photo)) %>
-    <% end %>
   </p>
+    <div class="row">
+      <% @photos.each do |photo|%>
+        <div class="span4">
+          <%= link_to( image_tag(photo.photo_picture.url), user_album_photo_path(photo.album.user, photo.album, photo)) %>
+        </div>
+      <% end %>
+    </div>
 
   <div class="links">
    <% if can? :manage, @album.user %>
