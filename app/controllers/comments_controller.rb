@@ -45,9 +45,11 @@ class CommentsController < ApplicationController
     params[:comment][:photo_id] = params[:id]
     params[:comment][:user_id] = current_user.id
     @comment = Comment.new(params[:comment])
+    @photo = Photo.find(params[:id].to_i)
 
     respond_to do |format|
       if @comment.save
+        CommentMailer.comment_notification(@photo, @comment, @comment.user).deliver
         photo_path = user_album_photo_path(@comment.photo.album.user.id, @comment.photo.album.id, @comment.photo.id)
         format.html { redirect_to photo_path, notice: 'Comment successfully created.' }
         format.json { render json: @comment, status: :created, location: @comment }
