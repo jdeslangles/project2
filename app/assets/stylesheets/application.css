@@ -74,3 +74,15 @@ text-align: center;
 .item.unfold .thumb {
   display: none;
 }*/
+
+footer {
+  width: 100%;
+  bottom: 0;
+  margin: 0 auto;
+  height: 20px;
+  position: fixed;
+}
+footer p{
+  text-align: center;
+  color: #A3A3A3;
+}
