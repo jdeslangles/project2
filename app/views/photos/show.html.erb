@@ -1,4 +1,4 @@
-<div class="span8">
+<div class="span12">
   <h1>Photo</h1>
 
   <br>
@@ -24,10 +24,9 @@
     <%= @photo.description %>
   </p>
 
-  <p>
-    <b>Photo picture:</b>
+    <div class="photo">
     <%= image_tag @photo.photo_picture.url %>
-  </p>
+    </div>
 
   <p>
     <b>Number of Likes:</b>

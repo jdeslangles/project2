@@ -1,4 +1,4 @@
-<div class="span8">
+<div class="span12">
   <h1>Album</h1>
   <br>
   <br>
@@ -36,15 +36,21 @@
       <div class="row">
         <% @photos.each do |photo|%>
           <div class="span3">
-<!--             < % cycle("1","2", "3") %> -->
+            <% cycle("1","2", "3", "4") %>
               <div class="photo">
                 <%= link_to( image_tag(photo.photo_picture.url), user_album_photo_path(photo.album.user, photo.album, photo)) %>
               </div>
             </div>
-              <!-- < % if current_cycle == '3' %> -->
-
-                <!-- <div class="row"> -->
-               <!-- < % end %> -->
+            <% if current_cycle == '2' %>
+                <script>
+                $( "div" ).last().addClass( "tilted1" );
+                </script>
+            <% end %>
+            <% if current_cycle == '4' %>
+                <script>
+                $( "div" ).last().addClass( "tilted2" );
+                </script>
+            <% end %>
           <% end %>
                 </div>
 
