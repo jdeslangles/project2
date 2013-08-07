@@ -13,7 +13,6 @@ gem 'devise'
 gem 'masonry-rails'
 gem 'acts_as_votable', '~> 0.5.0'
 gem 'acts-as-taggable-on'
-gem 'ransack'
 
 group :development do
   gem 'rspec-rails'
