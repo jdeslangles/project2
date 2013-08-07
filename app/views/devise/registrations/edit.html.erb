@@ -29,9 +29,9 @@
     <%= f.label :location %>
     <%= f.text_field :location %>
   </div>
-   <div>
-     <%= f.label :avatar %>
-     <%= f.file_field :avatar %>
+  <div>
+    <%= f.file_field :avatar, :onchange =>"validateFiles(this);", :data => { :max_file_size => 1.megabyte }%>
+     <%= f.label :avatar %><br/>
   </div>
   <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i> <br>
   <%= f.password_field :password, :autocomplete => "off" %></div>
