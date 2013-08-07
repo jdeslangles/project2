@@ -3,7 +3,7 @@ class AlbumsController < ApplicationController
  # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.order(:created_at).page(params[:page])
+    @albums = Album.order(:name).page(params[:page])
 
 
     respond_to do |format|
