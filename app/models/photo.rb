@@ -20,7 +20,7 @@ class Photo < ActiveRecord::Base
 
   private
   def photo_picture_size_validation
-    errors[:photo_picture, "Photo"] << "should be less than 1MB" if photo_picture.size > 1.megabyte
+    errors[:photo_picture, "Photo"] << "should be less than 1MB" if photo_picture.size > (1.2).megabyte
   end
 
 end
