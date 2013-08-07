@@ -27,7 +27,7 @@
               <%end%>
             </div> -->
             <div>
-            <p>Liking this? Have a look at the <%=link_to("album", user_album_path(photo.album.user, photo.album)) %>, or check out more of <%=photo.album.user.username %>'s work <%= link_to("here", user_path(photo.album.user))%>!</p>
+            <p>Liking this? Leave a <%=link_to("comment", user_album_photo_path(photo.album.user, photo.album, photo)) %>, have a look at the <%=link_to("album", user_album_path(photo.album.user, photo.album)) %>, or check out more of <%=photo.album.user.username %>'s work <%= link_to("here", user_path(photo.album.user))%>!</p>
             </div>
         </div>
 
