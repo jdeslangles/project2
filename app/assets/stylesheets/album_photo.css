@@ -1,0 +1,18 @@
+.photo{
+  background-color: white;
+  border: black solid 1px;
+  padding: 10px;
+  margin: 10px;
+
+  /* Gradients for modern browsers, replace as you see fit */
+  background-image: -moz-linear-gradient(top, #FCFCF7, #FAF7CF);
+  background-image: -ms-linear-gradient(top, #FCFCF7, #FAF7CF);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FCFCF7), to(#FAF7CF));
+  background-image: -webkit-linear-gradient(top, #FCFCF7, #FAF7CF);
+  background-image: -o-linear-gradient(top, #FCFCF7, #FAF7CF);
+  background-image: linear-gradient(top, #FCFCF7, #FAF7CF);
+  background-repeat: repeat-x;
+
+  /* IE8-9 gradient filter */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCFCF7', endColorstr='#FAF7CF', GradientType=0);
+}
