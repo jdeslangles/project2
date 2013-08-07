@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require imagesLoaded.pkgd
 //= require masonry.pkgd
-//= require jquery.isotope
 //= require_tree .
 
 $(function() {
