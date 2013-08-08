@@ -121,6 +121,9 @@ h3{
 }
 
 /*commenting*/
+.comments{
+  list-style-type: none;
+}
 .comment{
   font-size: 12px;
 }
@@ -135,12 +138,8 @@ h3{
 .photo_comments{
   margin-left: 1em;
 }
-.comment_details{
-  font-size: 10px;
-  float: left;
-}
-.comment_avatar{
-  float: left;
+.photo_comments li{
+  margin-bottom: 1em;
 }
 /*about us page styling*/
 .about_us{

@@ -41,23 +41,23 @@
       <p> Please <%= link_to 'log in', login_path %> to leave a comment </p>
     <% end %>
 
-    <div class="photo_comments">
-      <% @photo.comments.each do |comment| %>
-        <div class="comment_avatar">
-          <% if comment.user.avatar? %>
+     <ul class="comments">
+      <div class="photo_comments">
+       <% @photo.comments.each do |comment| %>
+
+           <li><% if comment.user.avatar? %>
             <%= image_tag comment.user.avatar.mini.url %>
-          <% end %>
-          </div>
-          <div>
-            "<%= comment.content %>"
-          </div>
-          <div class="comment_details">
-            <%= comment.user.username %> on <%= comment.created_at.strftime('%c') %>
-          </div>
-          <%if can? :destroy, comment %>
-            <%=link_to 'delete', comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-      <% end %>
+            <% end %>
+              "<%= comment.content %>"
+              <%= comment.user.username %> on <%= comment.created_at.strftime('%c') %>
+
+            <%if can? :destroy, comment %>
+              <%=link_to 'delete', comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+            </li>
+
+        <% end %>
+      </ul>
     </div>
 
       <%= render partial: "comments/form" if can? :create, @comment %>
