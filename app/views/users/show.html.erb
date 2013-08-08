@@ -34,7 +34,7 @@
 </div>
 
 
-<% if @user.albums.size > 10 %>
+<% if @user.albums.size > 8 %>
   <div class="links">
     <% if can? :update, @user %>
       <%= link_to 'Create Album', new_user_album_path(@user), class:"btn btn-success btn-mini" %>

@@ -1,13 +1,12 @@
 <br>
 <br>
 <div class="span10 offset1 photo">
-    <h1>4PIX Members</h1>
+    <h1>4PiX Members</h1>
     <br>
     <table class="table">
       <tr>
         <th> </th>
-        <th>First Name</th>
-        <th>Last Name</th>
+        <th>Full Name</th>
         <th>Username</th>
         <th>Location</th>
         <th></th>
@@ -18,8 +17,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= image_tag user.avatar.url %></td>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
+        <td><%= user.first_name %> <%= user.last_name %></td>
         <td><%= user.username %></td>
         <td><%= user.location %></td>
         <td><%= link_to 'View', user, class:"btn btn-info btn-mini" %></td>

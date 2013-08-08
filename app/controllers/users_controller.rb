@@ -2,11 +2,17 @@ class UsersController < ApplicationController
   # before_filter: authenticate_user
   load_and_authorize_resource
   before_filter :authenticate_user!
-  
+
   def about
-    @admins = User.all
+    @admins = []
+    @users = User.all
+    @users.each do |user|
+      if user.role == "admin"
+        @admins << user
+      end
+    end
   end
- 
+
 
  # GET /users
   # GET /users.json
