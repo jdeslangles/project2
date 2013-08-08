@@ -1,13 +1,13 @@
 <div class="span8">
 <div class="user_profile">
+    <p id="notice"><%= notice %></p>
     <div class="profile_block">
         <div class="row">
             <div class="span3">
                 <%= image_tag @user.avatar.detail.url, class:"img-rounded"  %>
             </div>
-            <div class="span9">
+            <div class="span9" id="details">
                 <div class="user_name">
-                    <p id="notice"><%= notice %></p>
                     <h1><%=@user.first_name%> <%=@user.last_name%></h1>
                 </div>
                 <div class="user_info">
@@ -15,18 +15,16 @@
                       <%= @user.biography %>
                     </p>
                     <p>
+                      <b>Location:</b>
+                      <%= @user.location %>
+                    </p>
+                    <p>
                       <b>Email:</b>
                       <%= @user.email %>
                     </p>
-
                     <p>
                       <b>Username:</b>
                       <%= @user.username %>
-                    </p>
-
-                    <p>
-                      <b>Location:</b>
-                      <%= @user.location %>
                     </p>
                   </div>
             </div>
@@ -35,24 +33,7 @@
 </div>
 
 
-
-<div class="links">
-  <% if can? :update, @user %>
-    <%= link_to 'Create Album', new_user_album_path(@user), class:"btn btn-success btn-mini" %>
-    <%= link_to 'Edit', edit_user_registration_path(@user), class:"btn btn-warning btn-mini" %>
-  <%end%>
-  <%= link_to 'Back', users_path, class:"btn btn-inverse btn-mini" %>
-  </div>
-
-<div class="user_albums">
-  <p>
-    <b>Albums:</b>
-    <% @user.albums.each do |album|%>
-      <%= link_to album.name, user_album_path(album.user, album) %>
-    <% end %>
-  </p>
-</div>
-<% if @user.albums.size > 10 %>
+<% if @user.albums.size > 8 %>
   <div class="links">
     <% if can? :update, @user %>
       <%= link_to 'Create Album', new_user_album_path(@user), class:"btn btn-success btn-mini" %>
@@ -61,6 +42,28 @@
     <%= link_to 'Back', users_path, class:"btn btn-inverse btn-mini" %>
   </div>
 <% end %>
+
+
+
+<div class="user_albums">
+  <p>
+    <b><%= @user.username.humanize %>'s Albums:</b>
+    <% @user.albums.each do |album|%>
+      <ul>
+        <li><%= image_tag album.photos.first.photo_picture.thumb %>
+          <%= link_to album.name, user_album_path(album.user, album) %></li>
+      </ul>
+    <% end %>
+  </p>
+</div>
+
+<div class="links">
+  <% if can? :update, @user %>
+    <%= link_to 'Create Album', new_user_album_path(@user), class:"btn btn-success btn-mini" %>
+    <%= link_to 'Edit', edit_user_registration_path(@user), class:"btn btn-warning btn-mini" %>
+  <%end%>
+  <%= link_to 'Back', users_path, class:"btn btn-inverse btn-mini" %>
+  </div>
 <br>
 <br>
 </div>

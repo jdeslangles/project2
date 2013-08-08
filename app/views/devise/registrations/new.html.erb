@@ -3,7 +3,7 @@
 <br>
 <h2>Sign up</h2>
 <br>
-<p>Sign in with <%= link_to "Google", user_omniauth_authorize_path(:google_oauth2) %> or sign up with this regsitration form:</p>
+<p>Sign in with <%= link_to "Google", user_omniauth_authorize_path(:google_oauth2) %> or fill out this form:</p>
 <br>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
