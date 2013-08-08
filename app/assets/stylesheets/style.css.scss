@@ -5,9 +5,28 @@ $denim_blue: #2d3442;
 body {
   font-family: 'Oxygen', sans-serif;
 }
+h1 {
+  font-family: 'Kameron', serif;
+}
+
+.container {
+  width: 960px;
+  margin: 0 auto;
+  min-height: 100%;
+  position: relative;
+}
+
+.header{
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.row{
+  padding-bottom: 30px;
+  margin: 0 auto;
+}
 
 /*Navbar styling*/
-
 .nav-signup {
   color: $text_grey;
 }
@@ -40,34 +59,25 @@ body {
   border-color: $text_grey
 }
 
-/*.links {
-text-align: center;
-}*/
-
-h1 {
-  font-family: 'Kameron', serif;
-}
-
-.container {
-  width: 960px;
-  margin: 0 auto;
-  min-height: 100%;
-  position: relative;
-}
-
-.header{
-  padding: 10px;
-  margin: 0 auto;
-}
-
-.row{
-  padding-bottom: 30px;
-  margin: 0 auto;
-}
 
 /*users index styling*/
 .table th {
   width: 60px;
+}
+
+/*user profile styling*/
+.user_profile {
+  margin: 0 auto;
+}
+
+.profile_block{
+  background-color: $denim_blue;
+  width: 960px;
+  height: 350px;
+}
+
+.img-rounded{
+  border-radius: 999px;
 }
 
 /*footer styling*/

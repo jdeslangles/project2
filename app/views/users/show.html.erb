@@ -1,64 +1,74 @@
 <div class="span8">
-  <% if current_user.id == @user.id %>
-    <h1>My Profile</h1>
-    <p id="notice"><%= notice %></p>
-  <%else%>
-    <h1><%=@user.first_name%> <%=@user.last_name%></h1>
-  <%end %>
-  <br>
+<div class="user_profile">
+    <div class="profile_block">
+        <div class="row">
+            <div class="span3">
+                <%= image_tag @user.avatar.detail.url, class:"img-rounded"  %>
+            </div>
+            <div class="span9">
+                <div class="user_name">
+                    <% if current_user.id == @user.id %>
+                      <h1>My Profile</h1>
+                      <p id="notice"><%= notice %></p>
+                    <%else%>
+                      <h1><%=@user.first_name%> <%=@user.last_name%></h1>
+                    <%end %>
+                </div>
+                <div class="user_info">
+                    <p>
+                      <b>First name:</b>
+                      <%= @user.first_name %>
+                    </p>
 
-  <br>
-    <div class="links">
-      <% if can? :update, @user %>
-        <%= link_to 'Create Album', new_user_album_path(@user), class:"btn btn-success btn-mini" %>
-        <%= link_to 'Edit', edit_user_registration_path(@user), class:"btn btn-warning btn-mini" %>
-      <%end%>
-      <%= link_to 'Back', users_path, class:"btn btn-inverse btn-mini" %>
-      </div>
-  <br>
+                    <p>
+                      <b>Last name:</b>
+                      <%= @user.last_name %>
+                    </p>
 
-  <p>
-    <b>First name:</b>
-    <%= @user.first_name %>
-  </p>
+                    <p>
+                      <b>Email:</b>
+                      <%= @user.email %>
+                    </p>
 
-  <p>
-    <b>Last name:</b>
-    <%= @user.last_name %>
-  </p>
+                    <p>
+                      <b>Username:</b>
+                      <%= @user.username %>
+                    </p>
 
-  <p>
-    <b>Email:</b>
-    <%= @user.email %>
-  </p>
+                    <p>
+                      <b>Biography:</b>
+                      <%= @user.biography %>
+                    </p>
 
-  <p>
-    <b>Username:</b>
-    <%= @user.username %>
-  </p>
+                    <p>
+                      <b>Location:</b>
+                      <%= @user.location %>
+                    </p>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-  <p>
-    <b>Avatar:</b>
-    <%= image_tag @user.avatar.url %>
-  </p>
 
-  <p>
-    <b>Biography:</b>
-    <%= @user.biography %>
-  </p>
 
-  <p>
-    <b>Location:</b>
-    <%= @user.location %>
-  </p>
+<div class="links">
+  <% if can? :update, @user %>
+    <%= link_to 'Create Album', new_user_album_path(@user), class:"btn btn-success btn-mini" %>
+    <%= link_to 'Edit', edit_user_registration_path(@user), class:"btn btn-warning btn-mini" %>
+  <%end%>
+  <%= link_to 'Back', users_path, class:"btn btn-inverse btn-mini" %>
+  </div>
 
+<div class="user_albums">
   <p>
     <b>Albums:</b>
     <% @user.albums.each do |album|%>
       <%= link_to album.name, user_album_path(album.user, album) %>
     <% end %>
   </p>
-
+</div>
+<% if @user.albums.size > 10 %>
   <div class="links">
     <% if can? :update, @user %>
       <%= link_to 'Create Album', new_user_album_path(@user), class:"btn btn-success btn-mini" %>
@@ -66,6 +76,7 @@
     <%end%>
     <%= link_to 'Back', users_path, class:"btn btn-inverse btn-mini" %>
   </div>
+<% end %>
 <br>
 <br>
 </div>
