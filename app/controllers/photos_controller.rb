@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
 # Photo wall methods
   def photo_wall
     @photos = Photo.all
-    render :photo_wall
+    # render :photo_wall
   end
 
   def like_wall
@@ -52,7 +52,7 @@ class PhotosController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @album = Album.find(params[:album_id])
-    
+
 
     respond_to do |format|
       format.html # index.html.erb

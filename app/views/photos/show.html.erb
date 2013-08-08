@@ -1,40 +1,25 @@
 <div class="span12">
-  <h1>Photo</h1>
-
   <br>
   <br>
-
-  <div class="links">
-    <% if can? :manage, @photo.album.user %>
-      <%= link_to 'Edit', edit_user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-warning btn-mini" %>
-      <%= link_to 'Destroy', user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
-    <%= link_to 'Back to Album', user_album_path(@photo.album.user, @photo.album), class:"btn btn-inverse btn-mini" %>
-  </div>
-
-  <br>
-
+  <h1><%= @photo.name %></h1>
   <p>
-    <b>Name:</b>
-    <%= @photo.name %>
+    <b><em>by <%= @photo.album.user.username %><em></b>
   </p>
-
-  <p>
-    <b>Description:</b>
-    <%= @photo.description %>
-  </p>
-
+  <br>
+  <% if @photo.description? %>
+    <p>
+      <b>"<%= @photo.description %>"</b>
+    </p>
+  <% end %>
+  <br>
     <div class="photo">
     <%= image_tag @photo.photo_picture.url %>
     </div>
-
-
   <p>
     <b>Number of Likes:</b>
       <%= @photo.likes.size %>
       <%= link_to "Download full size", download_user_album_photo_path(@photo.album.user, @photo.album, @photo) %>
   </p>
-
   <p>
     <b>Tags:</b>
     <%= @photo.tag_list %>
@@ -52,29 +37,28 @@
   </div>
 
   <div class="comments_container">
-    <p>
-      <b>Comments:</b>
-    </p>
-    <%if current_user %>
-    <% else %>
+    <h3> Comments: </h3>
+    <%unless current_user %>
       <p> Please <%= link_to 'log in', login_path %> to leave a comment </p>
     <% end %>
-    <ul class="photo_comments">
+
+    <div class="photo_comments">
       <% @photo.comments.each do |comment| %>
-        <li>
-          <%= comment.content %>
+          <div class="comment_avatar"><%= image_tag comment.user.avatar.mini.url %></div>
+            <div>"<%= comment.content %>"</div>
+          <div class="comment_details"><%= comment.user.username %> on <%= comment.created_at.strftime('%c') %></div>
+
           <%if can? :destroy, comment %>
             <%=link_to 'delete', comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
-        </li>
       <% end %>
-    </ul>
+    </div>
+
       <%= render partial: "comments/form" if can? :create, @comment %>
   </div>
 
   <br>
   <br>
-
   <div class="links">
     <% if can? :manage, @photo.album.user %>
       <%= link_to 'Edit', edit_user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-warning btn-mini" %>

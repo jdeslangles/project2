@@ -1,7 +1,9 @@
-<br>
-<br>
 <div class="span12">
-<h1>Wall of Fame</h1>
+<br>
+<br>
+<h1 class="links">4PiX's Wall of Fame</h1>
+<h3 class="links">{ PiX of the Week }</h3>
+<br>
 <br>
   <div id="portfolio">
   <% if @photos %>
@@ -29,7 +31,7 @@
               <%end%>
             </div> -->
             <div>
-            <p>Leave a <%=link_to("comment", user_album_photo_path(photo.album.user, photo.album, photo)) %>, look at the full <%=link_to("album", user_album_path(photo.album.user, photo.album)) %>, or check out more of <%=photo.album.user.username %>'s photography <%= link_to("here", user_path(photo.album.user))%>!</p>
+            <p>Leave a <%=link_to("comment", user_album_photo_path(photo.album.user, photo.album, photo)) %>, look at the full <%=link_to("album", user_album_path(photo.album.user, photo.album)) %>, or check out more of <%=photo.album.user.username.humanize %>'s photography <%= link_to("here", user_path(photo.album.user))%>!</p>
             </div>
         </div>
 

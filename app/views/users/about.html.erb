@@ -1,11 +1,11 @@
 <%= content_for :page_title, 'About Us - Custom page title' %>
 <div class="row">
   <div id="team_info">
-    <h1>About 4PIX</h1>
+    <h1>About 4PiX</h1>
     <div class="about_us">
-      <p> We are the 4PIX team in London and our mission is to revolutionize the world of the photography. We guarantee the quality of our work and strive to provide exceptional customer service. Please feel free to contact us with questions, concerns or recomendations. We're always interested in making 4PIX better for you!</p>
+      <p> We are the 4PiX team in London and our mission is to revolutionize the world of the photography. We guarantee the highest quality of work and strive to provide exceptional customer service. Please feel free to contact us with questions, concerns or recommendations. We're always interested in making 4PiX better for <em>you!</em></p>
     </div>
-    <h2 class="meet_us">Meet the Team</h2>
+    <h2 class="meet_us links">Meet the Team</h2>
   </div>
 
   <% @admins.each_slice(3) do |admins| %>
@@ -17,10 +17,6 @@
           <p><%= admin.biography %></p>
         </div>
       <% end %>
-
-  </div>
+    </div>
   <% end %>
-
-
-
 </div>

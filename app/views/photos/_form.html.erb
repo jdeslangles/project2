@@ -1,3 +1,4 @@
+<div class="span4 offset4 photo">
 <%= form_for [@album.user, @album, @photo] do |f| %>
 
   <% if @photo.errors.any? %>
@@ -12,10 +13,6 @@
     </div>
   <% end %>
 
-  <div class="links">
-    <%= f.submit 'Submit', class: "btn btn-success btn-mini" %>
-    <%= link_to 'Back to Album', user_album_path(@album.user, @album), class:"btn btn-inverse btn-mini" %>
-  </div>
   <br>
 
   <div class="field">
@@ -43,3 +40,4 @@
     <%= link_to 'Back to Album', user_album_path(@album.user, @album), class:"btn btn-inverse btn-mini" %>
   </div>
 <% end %>
+</div>

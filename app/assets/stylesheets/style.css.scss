@@ -16,19 +16,11 @@ h1 {
   position: relative;
 }
 
-// .header{
-//   padding: 10px;
-//   margin: 0 auto;
-// }
 /*Navbar styling*/
-
 .header{
   padding: 10px;
   margin: 0 auto;
 }
-
-
-/*Navbar styling*/
 
 .nav-signup {
   color: $text_grey;
@@ -52,6 +44,7 @@ h1 {
 .navbar-inverse .nav .active > a:focus {
     background-color: $denim_blue;
     border: none;
+    -webkit-box-shadow: none;
  }
  .navbar-inverse .navbar-link:hover,
 .navbar-inverse .navbar-link:focus {
@@ -66,7 +59,7 @@ h1 {
   margin-left: 20px;
 }
 
-h1, 
+h1,
 h2,
 h3{
   font-family: 'Kameron', serif;
@@ -84,6 +77,12 @@ h3{
 }
 
 /*user profile styling*/
+
+.user_info{
+  margin-left: 1.5em;
+  margin-top: 2em;
+}
+
 .user_profile {
   margin: 0 auto;
 }
@@ -97,8 +96,44 @@ h3{
 
 .img-rounded{
   border-radius: 999px;
+  margin-top: 3em;
+  margin-left: 1.4em;
 }
 
+#details{
+  margin-top: 3em;
+}
+
+.user_name h1{
+  font-size: 55px;
+}
+
+.user_albums{
+  margin: 1em 0 0 1em;
+}
+
+/*commenting*/
+.comment{
+  font-size: 12px;
+}
+.comments_container h3{
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+.comments_container p{
+  font-size: 10px;
+}
+.photo_comments{
+  margin-left: 1em;
+}
+.comment_details{
+  font-size: 10px;
+  float: left;
+}
+.comment_avatar{
+  float: left;
+}
 /*about us page styling*/
 .about_us{
   width: 50em;
@@ -106,16 +141,6 @@ h3{
 .meet_us{
   margin-top: 1em;
 }
-
-
-/*footer styling*/
-// .footer{
-//   height: 30px;
-//   width: 100%;
-//   bottom: 0;
-//   margin: 0 auto;
-//   position: absolute;
-// }
 
 .footer p{
   text-align: center;

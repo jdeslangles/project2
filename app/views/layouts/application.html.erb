@@ -27,7 +27,7 @@
   <div class="navbar navbar-inverse">
     <nav class="navbar-inner">
       <ul class ="nav">
-        <li class="active"><%= link_to("4PIX", photo_wall_path) %></li>
+        <li class="active"><%= link_to("4PiX", photo_wall_path) %></li>
 
         <li><%= link_to('Members', users_path)  %></li>
 
@@ -50,7 +50,7 @@
         <% end %>
         <li class="nav-user">
           <% if current_user %>
-            <%= link_to "Log Out, #{current_user.username}!" , destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to "Log Out, #{current_user.username.humanize}!" , destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% else %>
             <%= link_to 'Login', login_path %>
           <% end %>
@@ -65,7 +65,7 @@
         <%= yield %>
       </div>
     <div class="footer">
-      <p>Made with organically grown, locally sourced code. Meet the <%= link_to('4PIX Team!', about_path) %></p>
+      <p>Made with organically grown, locally sourced code. Meet the <%= link_to('4PiX Team!', about_path) %></p>
     </div>
   </div>
 
