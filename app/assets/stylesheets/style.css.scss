@@ -48,6 +48,7 @@ h1 {
 .navbar-inverse .nav .active > a:focus {
     background-color: $denim_blue;
     border: none;
+    -webkit-box-shadow: none;
  }
  .navbar-inverse .navbar-link:hover,
 .navbar-inverse .navbar-link:focus {
