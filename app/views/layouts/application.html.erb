@@ -47,7 +47,7 @@
         <% end %>
         <li class="nav-user">
           <% if current_user %>
-            <%= link_to "Log Out, #{current_user.username}!" , destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to "Log Out, #{current_user.username.humanize}!" , destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% else %>
             <%= link_to 'Login', login_path %>
           <% end %>
