@@ -112,6 +112,28 @@ h3{
   margin: 1em 0 0 1em;
 }
 
+/*commenting*/
+.comment{
+  font-size: 12px;
+}
+.comments_container h3{
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+.comments_container p{
+  font-size: 10px;
+}
+.photo_comments{
+  margin-left: 1em;
+}
+.comment_details{
+  font-size: 10px;
+  float: left;
+}
+.comment_avatar{
+  float: left;
+}
 /*about us page styling*/
 .about_us{
   width: 50em;
