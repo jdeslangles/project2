@@ -41,6 +41,11 @@ class PhotosController < ApplicationController
     end
   end
 
+  def download
+    @photo = Photo.find(params[:id])
+    send_file ActionController::Base.helpers.asset_path(@photo.photo_picture.path), disposition: 'attachment'
+  end
+
 
   # GET /photos
   # GET /photos.json

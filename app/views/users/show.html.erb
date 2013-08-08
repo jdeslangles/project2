@@ -1,10 +1,12 @@
-<div class="span8">
-<div class="user_profile">
+<div class="span12">
+  <div class="user_profile">
     <p id="notice"><%= notice %></p>
     <div class="profile_block">
         <div class="row">
             <div class="span3">
+              <% if @user.avatar? %>
                 <%= image_tag @user.avatar.detail.url, class:"img-rounded"  %>
+                <% end %>
             </div>
             <div class="span9" id="details">
                 <div class="user_name">
@@ -37,9 +39,9 @@
   <div class="links">
     <% if can? :update, @user %>
       <%= link_to 'Create Album', new_user_album_path(@user), class:"btn btn-success btn-mini" %>
-      <%= link_to 'Edit', edit_user_registration_path(@user), class:"btn btn-warning btn-mini" %>
+      <%= link_to 'Edit your Profile', edit_user_registration_path(@user), class:"btn btn-warning btn-mini" %>
     <%end%>
-    <%= link_to 'Back', users_path, class:"btn btn-inverse btn-mini" %>
+    <%= link_to 'Back to Members Page', users_path, class:"btn btn-inverse btn-mini" %>
   </div>
 <% end %>
 
@@ -48,21 +50,45 @@
 <div class="user_albums">
   <p>
     <b><%= @user.username.humanize %>'s Albums:</b>
-    <% @user.albums.each do |album|%>
-      <ul>
-        <li><%= image_tag album.photos.first.photo_picture.thumb %>
-          <%= link_to album.name, user_album_path(album.user, album) %></li>
-      </ul>
-    <% end %>
   </p>
 </div>
 
-<div class="links">
-  <% if can? :update, @user %>
-    <%= link_to 'Create Album', new_user_album_path(@user), class:"btn btn-success btn-mini" %>
-    <%= link_to 'Edit', edit_user_registration_path(@user), class:"btn btn-warning btn-mini" %>
-  <%end%>
-  <%= link_to 'Back', users_path, class:"btn btn-inverse btn-mini" %>
+  <div class="row">
+    <% @user.albums.each do |album|%>
+      <div class="span3 imglist">
+        <% cycle("1","2","3","4","5") %>
+          <div class="photo">
+            <% if album.photos.size != 0 %>
+              <b><%= image_tag album.photos.first.photo_picture.thumb %></b>
+            <% end %>
+            <b><%= link_to album.name, user_album_path(album.user, album) %></b>
+          </div>
+        </div>
+        <% if current_cycle == '2' %>
+            <script>
+            $( "div" ).last().addClass( "tilted1" );
+            </script>
+        <% end %>
+        <% if current_cycle == '4' %>
+            <script>
+            $( "div" ).last().addClass( "tilted2" );
+            </script>
+        <% end %>
+        <% if current_cycle == '5' %>
+            <script>
+            $( "div" ).last().addClass( "tilted3" );
+            </script>
+        <% end %>
+      <% end %>
+    </div>
+<br>
+<br>
+  <div class="links">
+    <% if can? :update, @user %>
+      <%= link_to 'Create Album', new_user_album_path(@user), class:"btn btn-success btn-mini" %>
+      <%= link_to 'Edit your Profile', edit_user_registration_path(@user), class:"btn btn-warning btn-mini" %>
+    <%end%>
+    <%= link_to 'Back to Members Page', users_path, class:"btn btn-inverse btn-mini" %>
   </div>
 <br>
 <br>

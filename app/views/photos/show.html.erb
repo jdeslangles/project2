@@ -1,16 +1,16 @@
 <div class="span12">
   <br>
   <br>
-  <h1>Photo</h1>
+  <h1><%= @photo.name %></h1>
+  <p>
+    <b><em>by <%= @photo.album.user.username %><em></b>
+  </p>
   <br>
-  <p>
-    <b>Name:</b>
-    <%= @photo.name %>
-  </p>
-  <p>
-    <b>Description:</b>
-    <%= @photo.description %>
-  </p>
+  <% if @photo.description? %>
+    <p>
+      <b>"<%= @photo.description %>"</b>
+    </p>
+  <% end %>
   <br>
     <div class="photo">
     <%= image_tag @photo.photo_picture.url %>
@@ -18,6 +18,7 @@
   <p>
     <b>Number of Likes:</b>
       <%= @photo.likes.size %>
+      <%= link_to "Download full size", download_user_album_photo_path(@photo.album.user, @photo.album, @photo) %>
   </p>
   <p>
     <b>Tags:</b>
@@ -43,7 +44,11 @@
 
     <div class="photo_comments">
       <% @photo.comments.each do |comment| %>
-          <div class="comment_avatar"><%= image_tag comment.user.avatar.mini.url %></div>
+          <div class="comment_avatar">
+            <% if comment.user.avatar? %>
+              <%= image_tag comment.user.avatar.mini.url %>
+            <% end %>
+            </div>
             <div>"<%= comment.content %>"</div>
           <div class="comment_details"><%= comment.user.username %> on <%= comment.created_at.strftime('%c') %></div>
 

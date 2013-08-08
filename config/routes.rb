@@ -15,6 +15,7 @@ Project2::Application.routes.draw do
           post :unlike_wall
           post :like
           post :unlike
+          get :download
         end
       end
     end
