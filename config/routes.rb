@@ -1,6 +1,6 @@
 Project2::Application.routes.draw do
 
-  devise_for :user, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+  devise_for :user, controllers: {omniauth_callbacks: "omniauth_callbacks", registrations: "registrations" }
 
   devise_scope :user do
     get '/login', to: 'devise/sessions#new'
@@ -32,7 +32,8 @@ Project2::Application.routes.draw do
   end
 
  get '/about', to: 'users#about', as: :about
-  
+ get '/thanks_for_registering', to: 'users#thanks_for_registering', as: :thanks_for_registering
+
 
   root to: 'photos#photo_wall'
 

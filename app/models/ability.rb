@@ -23,7 +23,7 @@ class Ability
     else
       can :read, :all
       can :photo_wall, Photo
-      can :create, User
+      can [:create, :about, :thanks_for_registering], User
       can :photo_wall, Photo
     end
   end

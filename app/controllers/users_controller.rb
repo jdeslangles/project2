@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # before_filter: authenticate_user
   load_and_authorize_resource
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:about, :thanks_for_registering]
 
   def about
     @admins = []
@@ -12,7 +12,6 @@ class UsersController < ApplicationController
       end
     end
   end
-
 
  # GET /users
   # GET /users.json
