@@ -3,7 +3,7 @@
   <br>
   <h1 class="inner_shadow"><%= @photo.name %></h1>
   <p>
-    <b><em>by <%= @photo.album.user.username %><em></b>
+    <b><em>by <%= @photo.album.user.username %></em></b>
   </p>
   <br>
   <% if @photo.description? %>
@@ -12,29 +12,28 @@
     </p>
   <% end %>
   <br>
-    <div class="photo">
-    <%= image_tag @photo.photo_picture.url %>
+
+    <div class = "links">
+    <%= image_tag @photo.photo_picture.url, class:"photo" %>
     </div>
-  <p>
-    <b>Number of Likes:</b>
-      <%= @photo.likes.size %>
-      <%= link_to "Download full size", download_user_album_photo_path(@photo.album.user, @photo.album, @photo) %>
-  </p>
+
+    <div class="voting">
+      <b>Number of Likes: <%= @photo.likes.size %></b>
+        <% if can? [:like, :unlike], @photo %>
+          <% if current_user.voted_up_on? @photo %>
+            <%= button_to 'Unlike', unlike_user_album_photo_path(@photo.album.user, @photo.album, @photo), class: "btn"  %>
+          <% else %>
+            <%= button_to 'Like', like_user_album_photo_path(@photo.album.user, @photo.album, @photo), class: "btn" %>
+          <% end %>
+        <% else %>
+        <%end%>
+        <%= link_to "Download full size", download_user_album_photo_path(@photo.album.user, @photo.album, @photo), class: "btn" %>
+    </div>
+
   <p>
     <b>Tags:</b>
     <%= @photo.tag_list %>
   </p>
-
-  <div class="voting">
-    <% if can? [:like, :unlike], @photo %>
-      <% if current_user.voted_up_on? @photo %>
-        <%= button_to 'Unlike', unlike_user_album_photo_path(@photo.album.user, @photo.album, @photo) %>
-      <% else %>
-        <%= button_to 'Like', like_user_album_photo_path(@photo.album.user, @photo.album, @photo) %>
-      <% end %>
-    <% else %>
-    <%end%>
-  </div>
 
   <div class="comments_container">
     <h3> Comments: </h3>
@@ -44,14 +43,17 @@
 
     <div class="photo_comments">
       <% @photo.comments.each do |comment| %>
-          <div class="comment_avatar">
-            <% if comment.user.avatar? %>
-              <%= image_tag comment.user.avatar.mini.url %>
-            <% end %>
-            </div>
-            <div>"<%= comment.content %>"</div>
-          <div class="comment_details"><%= comment.user.username %> on <%= comment.created_at.strftime('%c') %></div>
-
+        <div class="comment_avatar">
+          <% if comment.user.avatar? %>
+            <%= image_tag comment.user.avatar.mini.url %>
+          <% end %>
+          </div>
+          <div>
+            "<%= comment.content %>"
+          </div>
+          <div class="comment_details">
+            <%= comment.user.username %> on <%= comment.created_at.strftime('%c') %>
+          </div>
           <%if can? :destroy, comment %>
             <%=link_to 'delete', comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
