@@ -36,17 +36,16 @@
   </div>
 
   <div class="comments_container">
-    <p>
-      <b>Comments:</b>
-    </p>
-    <%if current_user %>
-    <% else %>
+    <h3> Comments: </h3>
+    <%unless current_user %>
       <p> Please <%= link_to 'log in', login_path %> to leave a comment </p>
     <% end %>
     <ul class="photo_comments">
       <% @photo.comments.each do |comment| %>
         <li>
-          <%= comment.content %>
+          <%= image_tag comment.user.avatar.thumb.url %>
+          <%= comment.user.username %> on <%= comment.created_at.strftime('%c') %>
+          "<%= comment.content %>"
           <%if can? :destroy, comment %>
             <%=link_to 'delete', comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
