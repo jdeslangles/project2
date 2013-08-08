@@ -21,6 +21,7 @@ Project2::Application.routes.draw do
   end
 
   resources :comments
+  resources :pages
 
   get '/photo_wall', to: 'photos#photo_wall', as: :photo_wall
   get '/my_profile', to: 'users#my_profile', as: :my_profile
@@ -29,6 +30,9 @@ Project2::Application.routes.draw do
   resources :albums do
     get 'page/:page', action: :index, on: :collection
   end
+
+ get '/about', to: 'users#about', as: :about
+  
 
   root to: 'photos#photo_wall'
 
