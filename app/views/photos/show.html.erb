@@ -44,7 +44,11 @@
 
     <div class="photo_comments">
       <% @photo.comments.each do |comment| %>
-          <div class="comment_avatar"><%= image_tag comment.user.avatar.mini.url %></div>
+          <div class="comment_avatar">
+            <% if comment.user.avatar? %>
+              <%= image_tag comment.user.avatar.mini.url %>
+            <% end %>
+            </div>
             <div>"<%= comment.content %>"</div>
           <div class="comment_details"><%= comment.user.username %> on <%= comment.created_at.strftime('%c') %></div>
 

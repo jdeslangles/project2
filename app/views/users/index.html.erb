@@ -14,7 +14,12 @@
 
     <% @users.each do |user| %>
       <tr>
-        <td><%= image_tag user.avatar.thumb.url %></td>
+
+        <td>
+            <% if user.avatar? %>
+                <%= image_tag user.avatar.thumb.url %>
+            <% end %>
+        </td>
         <td><%= user.first_name %> <%= user.last_name %></td>
         <td><%= user.username.humanize %></td>
         <td><%= user.location %></td>

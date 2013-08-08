@@ -4,7 +4,9 @@
     <div class="profile_block">
         <div class="row">
             <div class="span3">
+              <% if @user.avatar? %>
                 <%= image_tag @user.avatar.detail.url, class:"img-rounded"  %>
+                <% end %>
             </div>
             <div class="span9" id="details">
                 <div class="user_name">
