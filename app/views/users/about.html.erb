@@ -11,7 +11,7 @@
   <% @admins.each_slice(3) do |admins| %>
     <div class="row">
       <% admins.each do |admin| %>
-        <div class="span4">
+        <div class="span4 photo_about">
           <h3><%= admin.first_name %> <% admin.last_name %></h3>
           <%= link_to image_tag(admin.avatar), user_path(admin) %><br/>
           <p><%= admin.biography %></p>
