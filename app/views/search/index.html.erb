@@ -1,32 +1,37 @@
-<h2>Search Results</h2>
+<div class="span12">
+  <br>
+  <br>
+  <h2 class="inner_shadow">Search Results</h2>
+  <br>
+  <% if (@photos + @albums + @users).empty? %>
+    Sorry, nothing matched your search term.
+  <% end %>
 
-<% if (@photos + @albums + @users).empty? %>
-  Sorry, nothing matched your search term.
-<% end %>
+  <div class="row">
 
-<div class="row">
+    <% @photos.each do |photo| %>
+      <div class="span3 photo">
+        <b><em>Photo:</em></b>
+        <%= link_to( image_tag(photo.photo_picture.url), user_album_photo_path(photo.album.user, photo.album, photo)) %>
+      </div>
+    <% end if @photos %>
 
-  <% @photos.each do |photo| %>
-    <div class="span3 photo">
-      <b><em>Photo:</em></b>
-      <%= link_to( image_tag(photo.photo_picture.url), user_album_photo_path(photo.album.user, photo.album, photo)) %>
-    </div>
-  <% end if @photos %>
+    <% @albums.each do |album| %>
+      <div class="span3 photo">
+        <b><em>Album:</em></b>
+        <%= link_to album.name, user_album_path(album.user, album) %>
+      </div>
+    <% end if @albums %>
 
-  <% @albums.each do |album| %>
-    <div class="span3 photo">
-      <b><em>Album:</em></b>
-      <%= link_to album.name, user_album_path(album, album.user) %>
-    </div>
-  <% end if @albums %>
+    <% @users.each do |user| %>
 
-  <% @users.each do |user| %>
+      <div class="span3 photo">
+        <b><em>4PiX Member:</em></b>
+        <%= link_to user.first_name, user_path(user) %>
+      </div>
+    <% end if @users %>
 
-    <div class="span3 photo">
-      <b><em>4PiX Member:</em></b>
-      <%= link_to user.first_name, user_path(user) %>
-    </div>
-  <% end if @users %>
-<br>
-<br>
+  </div>
+  <br>
+  <br>
 </div>
