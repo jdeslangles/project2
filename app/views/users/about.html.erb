@@ -1,0 +1,26 @@
+<%= content_for :page_title, 'About Us - Custom page title' %>
+<div class="row">
+  <div id="team_info">
+    <h1>About 4PIX</h1>
+    <div class="about_us">
+      <p> We are the 4PIX team in London and our mission is to revolutionize the world of the photography. We guarantee the quality of our work and strive to provide exceptional customer service. Please feel free to contact us with questions, concerns or recomendations. We're always interested in making 4PIX better for you!</p>
+    </div>
+    <h2 class="meet_us">Meet the Team</h2>
+  </div>
+
+  <% @admins.each_slice(3) do |admins| %>
+    <div class="row">
+      <% admins.each do |admin| %>
+        <div class="span4">
+          <h3><%= admin.first_name %> <% admin.last_name %></h3>
+          <%= link_to image_tag(admin.avatar), user_path(admin) %><br/>
+          <p><%= admin.biography %></p>
+        </div>
+      <% end %>
+
+  </div>
+  <% end %>
+
+
+
+</div>

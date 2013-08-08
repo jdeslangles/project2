@@ -55,7 +55,16 @@ body {
 text-align: center;
 }*/
 
-h1 {
+#team_info{
+  margin-left: 20px;
+  font-family:"Times New Roman",Georgia,Serif;
+  
+}
+
+
+h1, 
+h2,
+h3{
   font-family: 'Kameron', serif;
 }
 
@@ -80,6 +89,15 @@ h1 {
 .table th {
   width: 60px;
 }
+
+/*about us page styling*/
+.about_us{
+  width: 50em;
+}
+.meet_us{
+  margin-top: 1em;
+}
+
 
 /*footer styling*/
 .footer{

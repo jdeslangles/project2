@@ -31,6 +31,7 @@ Project2::Application.routes.draw do
     get 'page/:page', action: :index, on: :collection
   end
 
+ get '/about', to: 'users#about', as: :about
   
 
   root to: 'photos#photo_wall'
