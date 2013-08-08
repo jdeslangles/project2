@@ -28,10 +28,10 @@
       <ul class ="nav">
         <li class="active"><%= link_to("4PIX", photo_wall_path) %></li>
 
-        <li><%= link_to('Members', users_path)  %></li>
+        <li><%= link_to('Users', users_path)  %></li>
 
         <% if current_user %>
-          <li><%= link_to('My Page', my_profile_path) %></li>
+          <li><%= link_to('My Profile', my_profile_path) %></li>
         <% end %>
       </ul>
 
@@ -47,7 +47,7 @@
         <% end %>
         <li class="nav-user">
           <% if current_user %>
-            <%= link_to "Logout, #{current_user.username}!" , destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to "Log Out, #{current_user.username}!" , destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% else %>
             <%= link_to 'Login', login_path %>
           <% end %>
@@ -58,24 +58,13 @@
   </div>
 
   <div class="container">
-    <div class="row">
+      <div class="row">
         <%= yield %>
       </div>
     <div class="footer">
       <p>Made with organically grown, locally sourced code. </p>
     </div>
   </div>
-
-  <style type="text/css">
-    body {
-      background: url(<%= raw randomized_background_image %>) no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-      }
-  </style>
-
 </body>
 
 

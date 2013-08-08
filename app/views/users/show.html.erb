@@ -7,24 +7,13 @@
             </div>
             <div class="span9">
                 <div class="user_name">
-                    <% if current_user.id == @user.id %>
-                      <h1>My Profile</h1>
-                      <p id="notice"><%= notice %></p>
-                    <%else%>
-                      <h1><%=@user.first_name%> <%=@user.last_name%></h1>
-                    <%end %>
+                    <p id="notice"><%= notice %></p>
+                    <h1><%=@user.first_name%> <%=@user.last_name%></h1>
                 </div>
                 <div class="user_info">
-                    <p>
-                      <b>First name:</b>
-                      <%= @user.first_name %>
+                    <p>Biography:
+                      <%= @user.biography %>
                     </p>
-
-                    <p>
-                      <b>Last name:</b>
-                      <%= @user.last_name %>
-                    </p>
-
                     <p>
                       <b>Email:</b>
                       <%= @user.email %>
@@ -35,10 +24,7 @@
                       <%= @user.username %>
                     </p>
 
-                    <p>
-                      <b>Biography:</b>
-                      <%= @user.biography %>
-                    </p>
+
 
                     <p>
                       <b>Location:</b>
