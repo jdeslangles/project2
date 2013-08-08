@@ -5,9 +5,9 @@
   <div id="portfolio">
   <% if @photos %>
   <% @photos.each do |photo| %>
-    <div class="item">
+    <div class="item photo_on_wall">
 
-      <%= image_tag photo.photo_picture, :data => {:id => photo.id, :'full-width' => photo.photo_picture.image_width, :'full-height' => photo.photo_picture.image_height }, :id => "thumb_#{photo.id}", :class =>"thumb", :width => 170 %>
+      <%= image_tag photo.photo_picture, :data => {:id => photo.id, :'full-width' => photo.photo_picture.image_width, :'full-height' => photo.photo_picture.image_height }, :id => "thumb_#{photo.id}", :class =>"thumb", :width => 160 %>
 
       <div class="info">
         <%= image_tag photo.photo_picture, :data => {:id => photo.id}, :id => "full_#{photo.id}",:class => "full" %>

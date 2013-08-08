@@ -1,0 +1,97 @@
+/* VARIABLES */
+$text_grey: #A3A3A3;
+$denim_blue: #2d3442;
+
+body {
+  font-family: 'Oxygen', sans-serif;
+}
+
+/*Navbar styling*/
+
+// .nav-user {
+//   color: grey;
+//   padding: 10px 0 0 130px ;
+// }
+
+// .nav-signup {
+//   color: grey;
+//   padding: 0 0 0 275px ;
+// }
+
+.nav-signup {
+  color: $text_grey;
+  padding: 0 0 0 275px ;
+}
+
+.navbar-inner{
+  border-radius: 0px;
+  border: 0px;
+  height: 4em;
+}
+.navbar .nav {
+  margin-top: 0.6em;
+}
+.navbar-inverse
+.navbar-inner{
+  background-image: none;
+  background-color: $denim_blue;
+ }
+.navbar-inverse .nav .active > a,
+.navbar-inverse .nav .active > a:hover,
+.navbar-inverse .nav .active > a:focus {
+    background-color: $denim_blue;
+    border: none;
+ }
+ .navbar-inverse .navbar-link:hover,
+.navbar-inverse .navbar-link:focus {
+  color: $denim_blue;
+}
+// .navbar-inverse .navbar-search .search-query{
+//   background-color: $text_grey;
+//   border-color: $text_grey
+// }
+
+/*.links {
+text-align: center;
+}*/
+
+h1 {
+  font-family: 'Kameron', serif;
+}
+
+.container {
+  width: 960px;
+  margin: 0 auto;
+  min-height: 100%;
+  position: relative;
+}
+
+.header{
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.row{
+  padding-bottom: 30px;
+  margin: 0 auto;
+}
+
+/*users index styling*/
+.table th {
+  width: 60px;
+}
+
+/*footer styling*/
+.footer{
+  height: 30px;
+  width: 100%;
+  bottom: 0;
+  margin: 0 auto;
+  position: absolute;
+}
+
+.footer p{
+  text-align: center;
+  color: $text_grey;
+  font-size: 11px;
+}

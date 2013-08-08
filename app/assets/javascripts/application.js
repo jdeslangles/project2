@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require imagesLoaded.pkgd
 //= require masonry.pkgd
-//= require jquery.isotope
 //= require_tree .
 
 $(function() {
@@ -39,18 +38,19 @@ $(function() {
             var current_thumb = $(current_item).find('img.thumb'),
                   current_item = $(current_item);
             current_thumb.removeAttr('height');
-            current_thumb.attr('width', '170px');
+            current_thumb.attr('width', '150px');
             current_item.height('');
-            current_item.width('170px');
+            current_item.width('150px');
             current_item.attr('data-scaled', 'false');
                         current_item.removeClass('unfold');
           });
           //$portfolio.masonry();
           if (item.attr('data-scaled') == "true") {
             // thumb.attr('height', thumb.attr('data-orig-height'));
-            thumb.attr('width', '170px');
+            thumb.attr('width', '150px');
             // item.height(thumb.attr('data-orig-height'));
-            item.width('170px');
+            item.width('150px');
+            item.height('');
             item.attr('data-scaled', 'false');
                         item.removeClass('unfold');
           } else {
@@ -79,7 +79,7 @@ function validateFiles(inputFile) {
   console.log(inputFile);
   var maxExceededMessage = "This file exceeds the maximum allowed file size (1 MB)";
   var extErrorMessage = "Only image file with extension: .jpg, .jpeg, .gif or .png is allowed";
-  var allowedExtension = ["jpg", "jpeg", "gif", "png"];
+  var allowedExtension = ["jpg", "jpeg", "gif", "png", "JPG", "JPEG", "GIF", "PNG"];
 
   var extName;
   var maxFileSize = $(inputFile).data('max-file-size');
@@ -100,4 +100,52 @@ function validateFiles(inputFile) {
     window.alert(extErrorMessage);
     $(inputFile).val('');
   };
+}
+
+
+$(window).load(function() {
+  $('.imglist img').each(function() {
+    $(this).wrap('<div style="display:inline-block;width:' + this.width + 'px;height:' + this.height + 'px;">').clone().addClass('gotcolors').css({'position': 'absolute', 'opacity' : 0 }).insertBefore(this);
+    this.src = grayscale(this.src);
+  }).animate({opacity: 1}, 500);
+});
+
+$(document).ready(function() {
+  $(".imglist .photo").hover(
+    function() {
+      $(this).find('.gotcolors').stop().animate({opacity: 1}, 200);
+    },
+    function() {
+      $(this).find('.gotcolors').stop().animate({opacity: 0}, 500);
+    }
+  );
+});
+
+function grayscale(src) {
+  var supportsCanvas = !!document.createElement('canvas').getContext;
+  if (supportsCanvas) {
+    var canvas = document.createElement('canvas'),
+    context = canvas.getContext('2d'),
+    imageData, px, length, i = 0, gray,
+    img = new Image();
+
+    img.src = src;
+    canvas.width = img.width;
+    canvas.height = img.height;
+    context.drawImage(img, 0, 0);
+
+    imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    px = imageData.data;
+    length = px.length;
+
+    for (; i < length; i += 4) {
+      gray = px[i] * .3 + px[i + 1] * .59 + px[i + 2] * .11;
+      px[i] = px[i + 1] = px[i + 2] = gray;
+    }
+
+    context.putImageData(imageData, 0, 0);
+    return canvas.toDataURL();
+  } else {
+    return src;
+  }
 }
