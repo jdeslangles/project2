@@ -28,7 +28,7 @@
               <%end%>
             </div> -->
             <div>
-            <p>Leave a <%=link_to("comment", user_album_photo_path(photo.album.user, photo.album, photo)) %>, look at the full <%=link_to("album", user_album_path(photo.album.user, photo.album)) %>, or check out more of <%=photo.album.user.username %>'s photography <%= link_to("here", user_path(photo.album.user))%>!</p>
+            <p>Leave a <%=link_to("comment", user_album_photo_path(photo.album.user, photo.album, photo)) %>, look at the full <%=link_to("album", user_album_path(photo.album.user, photo.album)) %>, or check out more of <%=photo.album.user.username.humanize %>'s photography <%= link_to("here", user_path(photo.album.user))%>!</p>
             </div>
         </div>
 
