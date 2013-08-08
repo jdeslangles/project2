@@ -40,18 +40,19 @@
     <%unless current_user %>
       <p> Please <%= link_to 'log in', login_path %> to leave a comment </p>
     <% end %>
-    <ul class="photo_comments">
+
+    <div class="photo_comments">
       <% @photo.comments.each do |comment| %>
-        <li>
-          <%= image_tag comment.user.avatar.thumb.url %>
-          <%= comment.user.username %> on <%= comment.created_at.strftime('%c') %>
-          "<%= comment.content %>"
+          <div class="comment_avatar"><%= image_tag comment.user.avatar.mini.url %></div>
+            <div>"<%= comment.content %>"</div>
+          <div class="comment_details"><%= comment.user.username %> on <%= comment.created_at.strftime('%c') %></div>
+
           <%if can? :destroy, comment %>
             <%=link_to 'delete', comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
-        </li>
       <% end %>
-    </ul>
+    </div>
+
       <%= render partial: "comments/form" if can? :create, @comment %>
   </div>
 
