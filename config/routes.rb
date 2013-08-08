@@ -31,7 +31,7 @@ Project2::Application.routes.draw do
     get 'page/:page', action: :index, on: :collection
   end
 
-   get "/pages/home" => 'high_voltage/pages#show', id: 'home'
+  
 
   root to: 'photos#photo_wall'
 

@@ -7,8 +7,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render 'shared/nav' %>
-<%= render 'shared/message' %>
 <div class="container">
       <div class="header">
         <div class="row">
@@ -43,7 +41,7 @@
               <% end %>
 
               <li>
-                <%= link_to ('About us', page_path) %>
+                <%= link_to('About us', page_path('about')) %>
               </li>
 
               <li>
