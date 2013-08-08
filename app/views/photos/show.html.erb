@@ -1,38 +1,24 @@
 <div class="span12">
+  <br>
+  <br>
   <h1>Photo</h1>
-
   <br>
-  <br>
-
-  <div class="links">
-    <% if can? :manage, @photo.album.user %>
-      <%= link_to 'Edit', edit_user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-warning btn-mini" %>
-      <%= link_to 'Destroy', user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
-    <%= link_to 'Back to Album', user_album_path(@photo.album.user, @photo.album), class:"btn btn-inverse btn-mini" %>
-  </div>
-
-  <br>
-
   <p>
     <b>Name:</b>
     <%= @photo.name %>
   </p>
-
   <p>
     <b>Description:</b>
     <%= @photo.description %>
   </p>
-
+  <br>
     <div class="photo">
     <%= image_tag @photo.photo_picture.url %>
     </div>
-
   <p>
     <b>Number of Likes:</b>
       <%= @photo.likes.size %>
   </p>
-
   <p>
     <b>Tags:</b>
     <%= @photo.tag_list %>
@@ -72,7 +58,6 @@
 
   <br>
   <br>
-
   <div class="links">
     <% if can? :manage, @photo.album.user %>
       <%= link_to 'Edit', edit_user_album_photo_path(@photo.album.user, @photo.album, @photo), class:"btn btn-warning btn-mini" %>
