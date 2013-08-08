@@ -1,26 +1,33 @@
 <div class="span10 offset1 photo">
 <br>
 <br>
-    <h1>4PiX Members</h1>
+    <h1 class="inner_shadow">4PiX Members</h1>
     <br>
     <table class="table">
       <tr>
         <th> </th>
-        <th>Full Name</th>
-        <th>Username</th>
-        <th>Location</th>
+        <th><em>Full Name</em></th>
+        <th><em>Username</em></th>
+        <th><em>Location</em></th>
         <th></th>
       </tr>
 
     <% @users.each do |user| %>
       <tr>
-        <td><%= image_tag user.avatar.thumb.url %></td>
+
+        <td>
+            <% if user.avatar? %>
+                <%= link_to( image_tag(user.avatar.thumb.url), user) %>
+            <% end %>
+        </td>
         <td><%= user.first_name %> <%= user.last_name %></td>
         <td><%= user.username.humanize %></td>
         <td><%= user.location %></td>
         <td><%= link_to 'View', user, class:"btn btn-info btn-mini" %>
-                <%if can? :update, user and current_user.role == 'registered' || 'admin' %>
+                <% if current_user == user %>
                     <%= link_to 'Edit', edit_user_registration_path(user), class:"btn btn-warning btn-mini" %>
+                <% end %>
+                <%if can? :update, user and current_user.role == 'registered' || 'admin' %>
                     <%= link_to 'Destroy', user, class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %>
                 <%end%></td>
       </tr>

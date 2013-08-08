@@ -33,7 +33,9 @@ h1 {
 }
 .navbar .nav {
   margin-top: 0.6em;
+  text-shadow: 2px 2px black, -1px -1px #444;
 }
+
 .navbar-inverse
 .navbar-inner{
   background-image: none;
@@ -64,6 +66,11 @@ h2,
 h3{
   font-family: 'Kameron', serif;
 }
+
+// .inner_shadow {
+//   text-shadow: 1px 1px white, -1px -1px #444;
+// }
+
 
 .container {
   width: 960px;
@@ -102,6 +109,7 @@ h3{
 
 #details{
   margin-top: 3em;
+  text-shadow: 2px 2px black, -1px -1px #444;
 }
 
 .user_name h1{
