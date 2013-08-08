@@ -6,21 +6,32 @@ body {
   font-family: 'Oxygen', sans-serif;
 }
 
+h1 {
+  font-family: 'Kameron', serif;
+}
+.container {
+  width: 960px;
+  margin: 0 auto;
+  min-height: 100%;
+  position: relative;
+}
+
+// .header{
+//   padding: 10px;
+//   margin: 0 auto;
+// }
 /*Navbar styling*/
 
-// .nav-user {
-//   color: grey;
-//   padding: 10px 0 0 130px ;
-// }
+.header{
+  padding: 10px;
+  margin: 0 auto;
+}
 
-// .nav-signup {
-//   color: grey;
-//   padding: 0 0 0 275px ;
-// }
+
+/*Navbar styling*/
 
 .nav-signup {
   color: $text_grey;
-  padding: 0 0 0 275px ;
 }
 
 .navbar-inner{
@@ -51,16 +62,9 @@ body {
 //   border-color: $text_grey
 // }
 
-/*.links {
-text-align: center;
-}*/
-
 #team_info{
   margin-left: 20px;
-  font-family:"Times New Roman",Georgia,Serif;
-  
 }
-
 
 h1, 
 h2,
@@ -73,21 +77,26 @@ h3{
   margin: 0 auto;
   min-height: 100%;
   position: relative;
-}
-
-.header{
-  padding: 10px;
-  margin: 0 auto;
-}
-
-.row{
-  padding-bottom: 30px;
-  margin: 0 auto;
-}
 
 /*users index styling*/
 .table th {
   width: 60px;
+}
+
+/*user profile styling*/
+.user_profile {
+  margin: 0 auto;
+}
+
+.profile_block{
+  background-color: $denim_blue;
+  width: 960px;
+  height: 300px;
+  color: $text_grey;
+}
+
+.img-rounded{
+  border-radius: 999px;
 }
 
 /*about us page styling*/
@@ -100,13 +109,13 @@ h3{
 
 
 /*footer styling*/
-.footer{
-  height: 30px;
-  width: 100%;
-  bottom: 0;
-  margin: 0 auto;
-  position: absolute;
-}
+// .footer{
+//   height: 30px;
+//   width: 100%;
+//   bottom: 0;
+//   margin: 0 auto;
+//   position: absolute;
+// }
 
 .footer p{
   text-align: center;

@@ -7,7 +7,6 @@
     <tr>
       <th>Name</th>
       <th>Description</th>
-      <th>Privacy</th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,7 +16,6 @@
     <tr>
       <td><%= album.name %></td>
       <td><%= album.description %></td>
-      <td><%= album.privacy %></td>
       <td><%= link_to 'View', user_album_path(album.user, album), class:"btn btn-info btn-mini" %></td>
       <td><%= link_to 'Edit', edit_user_album_path(album.user, album), class:"btn btn-warning btn-mini" %></td>
       <td><%= link_to 'Destroy', [album.user,album], class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %></td>

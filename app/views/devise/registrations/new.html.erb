@@ -1,5 +1,7 @@
-<h2>Sign up</h2>
 <br>
+<br>
+<div class="span6 offset3 photo">
+<h2>Sign up</h2>
 <br>
 <p>Sign in with <%= link_to "Google", user_omniauth_authorize_path(:google_oauth2) %> or sign up with this regsitration form:</p>
 <br>
@@ -49,6 +51,8 @@
     <%= f.label :password_confirmation, 'Password Confirmation' %>
     <%= f.password_field :password_confirmation %>
   </div>
-
-  <div><%= f.submit "Sign up" %></div>
+<br>
+  <div><%= f.submit "Sign up", class:"btn btn-inverse btn-large"  %>
+  </div>
 <% end %>
+</div>
