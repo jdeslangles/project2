@@ -13,7 +13,7 @@
  */
 
 
-/* CSS for Masonry */
+/*  CSS for Masonry */
 
 #container {
   width: 960px;
@@ -76,7 +76,7 @@
   /* IE8-9 gradient filter */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCFCF7', endColorstr='#FAF7CF', GradientType=0);
 
-    box-shadow: 2px 2px 5px 1px black;
+    box-shadow: 2px 2px 5px 1px #BABAB6;
 }
 
 /*.item.unfold .full {
@@ -85,4 +85,3 @@
 .item.unfold .thumb {
   display: none;
 }*/
-

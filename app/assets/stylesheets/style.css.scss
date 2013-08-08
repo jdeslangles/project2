@@ -8,6 +8,16 @@ body {
 
 /*Navbar styling*/
 
+// .nav-user {
+//   color: grey;
+//   padding: 10px 0 0 130px ;
+// }
+
+// .nav-signup {
+//   color: grey;
+//   padding: 0 0 0 275px ;
+// }
+
 .nav-signup {
   color: $text_grey;
   padding: 0 0 0 275px ;
@@ -36,10 +46,10 @@ body {
 .navbar-inverse .navbar-link:focus {
   color: $denim_blue;
 }
-.navbar-inverse .navbar-search .search-query{
-  background-color: $text_grey;
-  border-color: $text_grey
-}
+// .navbar-inverse .navbar-search .search-query{
+//   background-color: $text_grey;
+//   border-color: $text_grey
+// }
 
 /*.links {
 text-align: center;
