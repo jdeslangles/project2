@@ -5,16 +5,22 @@ $denim_blue: #2d3442;
 body {
   font-family: 'Oxygen', sans-serif;
 }
+
 h1 {
   font-family: 'Kameron', serif;
 }
-
 .container {
   width: 960px;
   margin: 0 auto;
   min-height: 100%;
   position: relative;
 }
+
+// .header{
+//   padding: 10px;
+//   margin: 0 auto;
+// }
+/*Navbar styling*/
 
 .header{
   padding: 10px;
