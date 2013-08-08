@@ -28,9 +28,11 @@
     <%= image_tag @photo.photo_picture.url %>
     </div>
 
+
   <p>
     <b>Number of Likes:</b>
       <%= @photo.likes.size %>
+      <%= link_to "Download full size", download_user_album_photo_path(@photo.album.user, @photo.album, @photo) %>
   </p>
 
   <p>

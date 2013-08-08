@@ -15,7 +15,8 @@
 
           <div class="votes">
             <b>Number of Likes:</b>
-            <%= photo.likes.size %>
+            <%= photo.likes.size %> | 
+            <%= link_to "Download full size", download_user_album_photo_path(photo.album.user, photo.album, photo) %>
           </div>
 
 <!--           <div class="voting">
