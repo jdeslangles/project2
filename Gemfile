@@ -18,6 +18,7 @@ gem 'acts-as-taggable-on'
 gem 'kaminari'
 gem 'mini_magick'
 gem "fog"
+gem 'high_voltage'
 
 
 group :development do
