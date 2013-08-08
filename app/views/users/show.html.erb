@@ -59,7 +59,7 @@
         <% cycle("1","2","3","4","5") %>
           <div class="photo">
             <% if album.photos.size != 0 %>
-              <b><%= image_tag album.photos.first.photo_picture.thumb %></b>
+              <b><%= link_to( image_tag(album.photos.first.photo_picture.thumb.url),  user_album_path(album.user, album))%></b>
             <% end %>
             <b><%= link_to album.name, user_album_path(album.user, album) %></b>
           </div>
