@@ -66,7 +66,7 @@ Project2::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
 
-  config.action_mailer.default_url_options={:host=>'example.com'}
+  config.action_mailer.default_url_options={:host=>'http://limitless-depths-7744.herokuapp.com'}
   #ActionMailerConfig
   #Setupforproduction-deliveries,noerrorsraised
   config.action_mailer.delivery_method=:smtp
