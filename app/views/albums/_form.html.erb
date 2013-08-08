@@ -13,7 +13,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %>
+    <%= f.label :name, "Album Name" %>
     <%= f.text_field :name %><br />
   </div>
   <div class="field">
@@ -22,7 +22,7 @@
   </div>
 
   <div class="links">
-    <%= f.submit 'Submit', class: "btn btn-success btn-mini" %>
+    <%= f.submit 'Create', class: "btn btn-success btn-mini" %>
     <%= link_to "Cancel", :back, class:"btn btn-inverse btn-mini" %>
   </div>
 <% end %>

@@ -11,12 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :content, 'Leave a Comment:' %><br />
+  <div class="leave_comment">
+    <%= f.label :content, 'Leave a Comment:' %>
     <%= f.text_area :content, :autofocus => true, size: '100x3' %>
   </div>
 
-  <div>
+  <div class="links">
     <%= f.submit 'Submit', class: "btn btn-success btn-mini" %>
   </div>
+
 <% end %>
