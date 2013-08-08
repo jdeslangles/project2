@@ -4,24 +4,29 @@
   Sorry, nothing matched your search term.
 <% end %>
 
-<ul class="unstyled">
+<div class="row">
+
   <% @photos.each do |photo| %>
-    <li>
+    <div class="span3 photo">
+      <b><em>Photo:</em></b>
       <%= link_to( image_tag(photo.photo_picture.url), user_album_photo_path(photo.album.user, photo.album, photo)) %>
-    </li>
+    </div>
   <% end if @photos %>
-</ul>
-<ul >
+
   <% @albums.each do |album| %>
-    <li>
+    <div class="span3 photo">
+      <b><em>Album:</em></b>
       <%= link_to album.name, user_album_path(album, album.user) %>
-    </li>
+    </div>
   <% end if @albums %>
-</ul>
-<ul>
+
   <% @users.each do |user| %>
-    <li>
+
+    <div class="span3 photo">
+      <b><em>4PiX Member:</em></b>
       <%= link_to user.first_name, user_path(user) %>
-    </li>
+    </div>
   <% end if @users %>
-</ul>
+<br>
+<br>
+</div>
