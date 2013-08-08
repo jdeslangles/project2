@@ -1,10 +1,10 @@
 /* Photo styling */
 .span4.photo_about {
-margin:0;
+margin-left: 15px;
 
 }
 .photo_about {
-  width:200px;
+/*  width:200px;*/
   background-color: white;
   border-top: #FAF7CF solid 1px;
   border-right: #FAF7CF solid 1px;
