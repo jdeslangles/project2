@@ -39,7 +39,7 @@
         <li>
           <%= form_tag search_path, class:"navbar-search pull-left", html: {method: :post} do |f| %>
             <%= text_field_tag :q, params[:q], class:"search-query" %>
-            <%= submit_tag 'Search!' , name: nil,  class:"btn btn-small" %>
+            <%= submit_tag 'Search!' , name: nil,  class:"btn btn-inverse btn-small" %>
           <% end %>
         </li>
         <% unless current_user %>
