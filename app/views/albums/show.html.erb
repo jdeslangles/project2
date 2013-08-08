@@ -1,19 +1,16 @@
 <div class="span12">
   <br>
   <br>
-  <h1>Album</h1>
+  <h1><%= @album.name %></h1>
+  <p>
+    <b><em>by <%= @album.user.username %></em></b>
+  </p>
   <br>
-  <p>
-    <b>Name:</b>
-    <%= @album.name %>
-  </p>
-  <p>
-    <b>Description:</b>
-    <%= @album.description %>
-  </p>
-  <p>
-    <b>Photos:</b>
-  </p>
+  <% if @album.description? %>
+    <p>
+      <b>"<%= @album.description %>"</b>
+    </p>
+  <% end %>
   <br>
   <div class="row">
     <% @photos.each do |photo|%>
@@ -55,11 +52,8 @@
       <%= link_to 'Destroy', user_album_path(@album.user, @album), class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
 
-    <%= link_to 'Back to User Profile', user_path(@album.user), class:"btn btn-inverse btn-mini" %>
+    <%= link_to "Back to #{@album.user.username.humanize}'s Profile", user_path(@album.user), class:"btn btn-inverse btn-mini" %>
   </div>
-
-
   <br>
   <br>
-
 </div>

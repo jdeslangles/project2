@@ -1,16 +1,16 @@
 <div class="span12">
   <br>
   <br>
-  <h1>Photo</h1>
+  <h1><%= @photo.name %></h1>
+  <p>
+    <b><em>by <%= @photo.album.user.username %><em></b>
+  </p>
   <br>
-  <p>
-    <b>Name:</b>
-    <%= @photo.name %>
-  </p>
-  <p>
-    <b>Description:</b>
-    <%= @photo.description %>
-  </p>
+  <% if @photo.description? %>
+    <p>
+      <b>"<%= @photo.description %>"</b>
+    </p>
+  <% end %>
   <br>
     <div class="photo">
     <%= image_tag @photo.photo_picture.url %>
