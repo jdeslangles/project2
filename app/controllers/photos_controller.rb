@@ -3,7 +3,7 @@ class PhotosController < ApplicationController
 
 # Photo wall methods
   def photo_wall
-    @photos = Photo.all
+    @photos = Photo.order(:cached_votes_total)
     # render :photo_wall
   end
 
