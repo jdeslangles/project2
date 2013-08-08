@@ -36,6 +36,7 @@
       <div class="row">
         <% @photos.each do |photo|%>
           <div class="span3 imglist">
+
             <% cycle("1","2","3","4","5") %>
               <div class="photo">
                 <%= link_to( image_tag(photo.photo_picture.thumb.url), user_album_photo_path(photo.album.user, photo.album, photo)) %>
