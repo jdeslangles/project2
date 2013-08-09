@@ -16,9 +16,18 @@ class PhotoPictureUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  def image
-    @image ||= MiniMagick::Image.open( model.send(mounted_as).path )
+ def image
+  @image ||= MiniMagick::Image.open(path_or_url)
+end
+
+def path_or_url
+  thing = model.send(mounted_as)
+  if thing.file.respond_to?(:url)
+    thing.file.url
+  else
+    thing.file.path
   end
+end
 
   def image_width
      image[:width]
