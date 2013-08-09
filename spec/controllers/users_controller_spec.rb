@@ -1,16 +1,17 @@
 require 'spec_helper'
-
+require 'pry'
 describe UsersController do
 
-  before (:each) do
+  before(:each) do
     @user = FactoryGirl.create(:user)
-    sign_in @user
+    puts sign_in(@user)
   end
 
   describe "GET 'show'" do
     
     it "should be successful" do
       get :show, :id => @user.id
+      binding.pry
       response.should be_success
     end
     
