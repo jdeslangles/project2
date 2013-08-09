@@ -17,6 +17,7 @@ h1 {
 }
 
 /*Navbar styling*/
+
 .header{
   padding: 10px;
   margin: 0 auto;
@@ -34,6 +35,11 @@ h1 {
 .navbar .nav {
   margin-top: 0.6em;
   text-shadow: 2px 2px black, -1px -1px #444;
+}
+
+.navbar .btn, .navbar .btn-group{
+  margin-top: 0;
+  color: $text_grey;
 }
 
 .navbar-inverse
