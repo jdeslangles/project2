@@ -23,6 +23,7 @@ Project2::Application.routes.draw do
 
   resources :comments
   resources :pages
+  resources :local_photos, only: :show
 
   get '/photo_wall', to: 'photos#photo_wall', as: :photo_wall
   get '/my_profile', to: 'users#my_profile', as: :my_profile
